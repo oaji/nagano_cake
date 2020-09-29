@@ -1,0 +1,2 @@
+module Customers::TopHelper
+end
