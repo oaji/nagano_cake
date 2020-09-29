@@ -1,0 +1,30 @@
+<h1>マイページ</h1>
+<table class="table">
+	<tr>
+		<th>name</th>
+		<th><%= @customer.family_name_kana %><%= customer.first_name_kana %></th>
+		<th><%= @customer.family_name %><%= customer.first_name %></th>
+	</tr>
+
+	<tr>
+		<th>住所</th>
+		<th><%= @customer.post_code %></th>
+		<th><%= @customer.address %></th>
+		<th><%= @customer.telephone %></th>
+		<th><%= @customer.email %></th>
+	</tr>
+</table>
+
+<!-- 登録情報変更へのリンクボタン↓(リンク) -->
+<% if @customer %>
+<th><%= link_to customers_customers_edit_path do %>
+	<p>ボタン</p>
+	<% end %>
+</th>
+<!-- パスワード変更ボタン(リンク) -->
+<th><%= link_to edit_customer_password_path do %>
+	<p>ボタン</p>
+	<% end %>
+</th>
+
+<% end %>
