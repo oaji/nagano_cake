@@ -65,6 +65,9 @@ Rails.application.routes.draw do
   end
   namespace :customers do
     resource :customers,only: [:show,:edit,:update]
+    patch "/customers/hide" => "customers#hide"
   end
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
