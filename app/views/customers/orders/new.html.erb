@@ -1,2 +1,31 @@
-<h1>Customers::Orders#new</h1>
-<p>Find me in app/views/customers/orders/new.html.erb</p>
+<div class="container">
+<h1>購入情報入力</h1>
+<%= form_with(model: @order, url: {action: 'confirm'}) do |f| %>
+  <% if @order.errors.any? %>
+      <h2><%= @order.errors.count %> 個のエラーがあります</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :address %>
+    <%= f.text_field :addressee %>
+
+    <%= f.label :post_code %>
+    <%= f.text_field :post_code %>
+
+    <%= f.label :how_to_pay %>
+    <%= f.select [['クレジットカード', 1]['銀行振込み', 2]], { include_blank: true,},{} %>
+
+    <%= @order.deliver_fee %>
+    <%= @order.total_payment %>
+    <%= f.submit "注文する" %>
+<% end %>
+</div>
+

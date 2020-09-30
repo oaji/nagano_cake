@@ -1,2 +1,20 @@
-<h1>Customers::Addresses#index</h1>
-<p>Find me in app/views/customers/addresses/index.html.erb</p>
+<div class="container">
+<table class="table table-striped">
+	<h1>配送先一覧</h1>
+		<tbody>
+			<% @addresses.each do |add| %>
+			<tr>
+				<td>
+					<%= add.post_code %>
+				</td>
+				<td>
+					<%= add.customer_address %>
+				</td>
+				<td>
+					<%= link_to "編集", addresses_edit_path(@address) %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
