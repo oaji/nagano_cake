@@ -1,0 +1,69 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "customers/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :first_name %>名<br />
+    <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name %>姓<br />
+    <%= f.text_field :family_name, autofocus: true, class: "family_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>カナ<br />
+    <%= f.text_field :first_name_kana, autofocus: true, class: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name_kana %>カナ<br />
+    <%= f.text_field :family_name_kana, autofocus: true, class: "family_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :post_code %>郵便番号<br />
+    <%= f.number_field :post_code, autofocus: true, class: "post_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :adress %>住所<br />
+    <%= f.number_field :adress, autofocus: true, class: "adress" %>
+  </div>
+
+  <div class="field">
+    <%= f.label : %>住所<br />
+    <%= f.number_field :adress, autofocus: true, class: "adress" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :telephone %>電話番号<br />
+    <%= f.number_field :telephone, autofocus: true, class: "telephone" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "customers/shared/links" %>
