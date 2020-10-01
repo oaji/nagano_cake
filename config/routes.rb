@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   # module :customers do
   namespace :customers do
 
+   
+
   resources :addresses, only: [:index, :destroy, :edit, :update]
 
   resources :orders, only: [:new, :create, :index, :show]
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   resource :customers,only: [:show,:edit,:update]
 
   patch "/customers/hide" => "customers#hide"
+
 
   end
 
