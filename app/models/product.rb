@@ -11,6 +11,7 @@ class Product < ApplicationRecord
 	# ジャンルとの紐付け
 	belongs_to :genre
 
+	# is_stoppedカラムがfalseであるものを取得する
 	scope :active, -> {where(is_stopped: false)}
 
 	validates :introduction, length: { maximum: 200 }

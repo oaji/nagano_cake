@@ -1,2 +1,36 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<h2>商品一覧画面</h2>
+  <div class="new-btn-wrap">
+   <%= link_to "商品登録", admin_items_new_path, class: "btn btn-primary btn-new-register btn-lg"; %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜き価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
+          <td><%= "#{item.price}円" %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.sales_status ? "販売中" : "販売停止中" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row text-center">
+    <!-- ページネーションを表示 -->
+    <!-- gim kaminari 必要 -->
+    <%= paginate @items, class: "paginate" %>
+        </div>
+    </div>
+  </div>
+</div>
+
+
