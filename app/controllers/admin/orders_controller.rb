@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  before_action :admin_customer
+  # before_action :admin_customer
 
   def index
   	@customer = Customer.all.order

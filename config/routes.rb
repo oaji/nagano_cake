@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
   }
-
+  #namespace :admins do
   namespace :admin do
     resources :orders,only:[:index, :show, :update]
 
@@ -28,8 +28,10 @@ Rails.application.routes.draw do
 
 
 
-
+  # module :customers do
   namespace :customers do
+
+   
 
   resources :addresses, only: [:index, :destroy, :edit, :update]
 
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   resource :customers,only: [:show,:edit,:update]
 
   patch "/customers/hide" => "customers#hide"
+
 
   end
 
