@@ -1,2 +1,5 @@
-<h1>Customers::Addresses#edit</h1>
-<p>Find me in app/views/customers/addresses/edit.html.erb</p>
+<div class="container">
+	<h1>配送先編集</h1>
+	<%= link_to "配送先一覧", order_path(@order), class: "order_#{@order.id}" %>|
+	<%= link_to "戻る", orders_path, class: "back" %>
+</div>

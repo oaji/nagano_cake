@@ -62,8 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-
-
+gem 'payjp'
+gem 'enum_help'
 gem 'slim-rails'
 
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -73,5 +73,4 @@ gem 'jquery-rails'
 gem 'pry-byebug'
 
 gem 'ancestry'
-
 
