@@ -1,30 +1,71 @@
-<h1>マイページ</h1>
-<table class="table">
-	<tr>
-		<th>name</th>
-		<th><%= @customer.family_name_kana %><%= customer.first_name_kana %></th>
-		<th><%= @customer.family_name %><%= customer.first_name %></th>
-	</tr>
+<%= link_to ' logout', destroy_customer_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %>
 
-	<tr>
-		<th>住所</th>
-		<th><%= @customer.post_code %></th>
-		<th><%= @customer.address %></th>
-		<th><%= @customer.telephone %></th>
-		<th><%= @customer.email %></th>
-	</tr>
+<h1>マイページ</h1>
+
+<% if @customer %>
+<ul>
+	<li>
+		<!-- 登録情報変更へのリンクボタン↓(リンク) -->
+		<%= link_to customers_customers_edit_path do %>
+		<p>ボタン</p>
+		<% end %>
+	</li>
+
+	<!-- パスワード変更ボタン(リンク) -->
+	<li><%= link_to edit_customer_password_path do %>
+	<p>ボタン</p>
+	<% end %>
+	</li>
+</ul>
+<% end %>
+
+<!--顧客情報-->
+<table class="table">
+	<thead>
+		<tr>
+			<th>お客様情報</th>
+		</tr>
+
+		<tr>
+			<th>名前</th>
+			<th><%= @customer.family_name_kana %><%= customer.first_name_kana %></th>
+			<th><%= @customer.family_name %><%= customer.first_name %></th>
+		</tr>
+
+		<tr>
+			<th>住所</th>
+			<th><%= @customer.post_code %></th>
+			<th><%= @customer.address %></th>
+			<th>電話番号</th>
+			<th><%= @customer.telephone %></th>
+			<th>名前</th>
+			<th><%= @customer.email %></th>
+		</tr>
 </table>
 
-<!-- 登録情報変更へのリンクボタン↓(リンク) -->
-<% if @customer %>
-<th><%= link_to customers_customers_edit_path do %>
-	<p>ボタン</p>
-	<% end %>
-</th>
-<!-- パスワード変更ボタン(リンク) -->
-<th><%= link_to edit_customer_password_path do %>
-	<p>ボタン</p>
-	<% end %>
-</th>
 
-<% end %>
+<!-- 配送先一覧へのリンクボタン↓(リンク) -->
+<table class="table">
+
+<tr>
+	<th>
+		<h3>配送先一覧</h3>
+	</th>
+	<th>
+	<%= link_to "配送先一覧", customers_addresses_index_path,class: 'btn btn-block btn-success' %>
+	</th>
+</tr>
+
+<!-- 注文履歴ボタン(リンク) -->
+<tr>
+	<th>
+		<h3>注文履歴</h3>
+	</th>
+
+	<th>
+	<%= link_to "注文履歴", customers_orders_index_path,class: 'btn btn-block btn-success' %>
+	</th>
+</tr>
+
+</table>
+
