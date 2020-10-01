@@ -1,6 +1,7 @@
 class Genre < ApplicationRecord
 
-  	has_many :products
-  	validates :name, presence: true
+	has_many :items
+  has_many :products
+ 	validates :name, presence: true
 
 end
