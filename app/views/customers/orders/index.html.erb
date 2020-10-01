@@ -5,6 +5,7 @@
 			<% @orders.each do |order| %>
 				<tr>
 					<td><%= order.name %></td>
+					<td><%= order.
 					<td><%= link_to '詳細画面', orders_show_path(order.id) %></td>
 				</tr>
 			<% end %>

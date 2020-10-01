@@ -8,5 +8,11 @@
 	<br>
 	<h2><%= link_tp '注文を確定する', orders_complete_path, method: :POST, class: "btn-block btn-warning" %>
     </h2>
-    <%= link_to "戻る", orders_path, class: "back" %>
-</div>
+	<%= form_for @order do |f| %>
+	  <%= @order.name %>
+	  <%= @order.post_code %>
+	  <%= @order.total_payment %>
+	  <%= f.submit '投稿画面に戻る', name: 'back' %>
+	  <%= f.submit '注文を確定する' %>
+	<% end %>
+	<%= link_to "戻る", orders_path, class: "back" %>

@@ -32,6 +32,8 @@ class Customers::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    new_order.customer_id = current_customer.id
+    new_order.save
   end
 
   def destroy

@@ -2,30 +2,41 @@
 <h1>購入情報入力</h1>
 <%= form_with(model: @order, url: {action: 'confirm'}) do |f| %>
   <% if @order.errors.any? %>
-      <h2><%= @order.errors.count %> 個のエラーがあります</h2>
+    <h2><%= @order.errors.count %> 個のエラーがあります</h2>
 
-      <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <ul>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   <% end %>
 
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
 
+  <div class="field">
     <%= f.label :address %>
     <%= f.text_field :addressee %>
+  </div>
 
+  <div class="field">
     <%= f.label :post_code %>
     <%= f.text_field :post_code %>
+  </div>
 
+  <div class="field">
     <%= f.label :how_to_pay %>
-    <%= f.select [['クレジットカード', 1]['銀行振込み', 2]], { include_blank: true,},{} %>
+    <%= select :order, :how_to_pay, Order.how_to_pays.map { |k, v| [t("enums.order.how_to_pay.#{k}"), v] } %>
+  </div>
 
-    <%= @order.deliver_fee %>
-    <%= @order.total_payment %>
+  <%= @order.deliver_fee %>
+  <%= @order.total_payment %>
+
+  <div class="actions">
     <%= f.submit "注文する" %>
+  </div>
 <% end %>
 </div>
 
