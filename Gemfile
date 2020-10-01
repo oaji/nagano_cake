@@ -68,3 +68,18 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'therubyracer'
+
+
+gem 'payjp'
+
+gem 'enum_help'
+
+gem 'slim-rails'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'jquery-rails'
+
+gem 'pry-byebug'
+
+gem 'ancestry'

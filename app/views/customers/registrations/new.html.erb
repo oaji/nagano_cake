@@ -4,6 +4,46 @@
   <%= render "customers/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :first_name %>名<br />
+    <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name %>姓<br />
+    <%= f.text_field :family_name, autofocus: true, class: "family_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>カナ<br />
+    <%= f.text_field :first_name_kana, autofocus: true, class: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name_kana %>カナ<br />
+    <%= f.text_field :family_name_kana, autofocus: true, class: "family_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :post_code %>郵便番号<br />
+    <%= f.number_field :post_code, autofocus: true, class: "post_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :adress %>住所<br />
+    <%= f.number_field :adress, autofocus: true, class: "adress" %>
+  </div>
+
+  <div class="field">
+    <%= f.label : %>住所<br />
+    <%= f.number_field :adress, autofocus: true, class: "adress" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :telephone %>電話番号<br />
+    <%= f.number_field :telephone, autofocus: true, class: "telephone" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

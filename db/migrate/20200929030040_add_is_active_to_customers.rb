@@ -8,5 +8,7 @@ class AddIsActiveToCustomers < ActiveRecord::Migration[5.2]
     add_column :customers, :post_code, :string
     add_column :customers, :address, :string
     add_column :customers, :telephone, :string
+    add_column :customers, :is_valid, :boolean, default: true, null: false
   end
+
 end

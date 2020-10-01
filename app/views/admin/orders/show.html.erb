@@ -1,2 +1,8 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+<h1>管理画面：注文詳細</h1>
+	<%= @order.name %>
+	<%= @order.post_code(@order) %>
+	<%= @order.total_payment(@order) %>
+	<%= select :order, :order_status, Order.order_statuss.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %>
+	<%= link_to "戻る", orders_path, class: "back" %>
+</div>
