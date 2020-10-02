@@ -21,7 +21,7 @@ class Customer < ApplicationRecord
     end
 
    def first_family_name
-   	self.first_name + self.last_name
+   	self.first_name + self.family_name
    end
 
 end
