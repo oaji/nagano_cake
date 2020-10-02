@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => 'customers/top#top'
+  get 'customers/top/about'
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
 
 
   scope module: :customers do
+
 
   resources :addresses, only: [:index, :destroy, :edit, :update]
 

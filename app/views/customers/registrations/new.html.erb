@@ -29,13 +29,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :adress %>住所<br />
-    <%= f.number_field :adress, autofocus: true, class: "adress" %>
-  </div>
-
-  <div class="field">
-    <%= f.label : %>住所<br />
-    <%= f.number_field :adress, autofocus: true, class: "adress" %>
+    <%= f.label :address %>住所<br />
+    <%= f.text_field :address, autofocus: true, class: "adress" %>
   </div>
 
    <div class="field">
@@ -62,8 +57,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録" %>
   </div>
 <% end %>
 
-<%= render "customers/shared/links" %>
