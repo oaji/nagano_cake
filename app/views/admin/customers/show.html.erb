@@ -1,42 +1,42 @@
 
-<h1><%= customer.family_name %><%= customer.first_name%>さんの会員詳細</h1>
+<%= @customer.family_name %><%= @customer.first_name%>さんの会員詳細
 
 
 <table class="table">
 
 	<tr>
 	<th>顧客ID</th>
-	<td><%= customer.id %></td>
+	<td><%= @customer.id %></td>
 	</tr>
 
 	<tr>
 	<th>氏名</th>
-	<td><%= customer.family_name %><%= customer.first_name %></td>
+	<td><%= @customer.family_name %><%= @customer.first_name %></td>
 	</tr>
 
 	<tr>
 	<th>フリガナ</th>
-	<td><%= customer.family_name %><%= customer.first_name %></td>
+	<td><%= @customer.family_name %><%= @customer.first_name %></td>
 	</tr>
 
 	<tr>
 	<th>郵便番号</th>
-	<td><%= customer.post_code %></td>
+	<td><%= @customer.post_code %></td>
 	</tr>
 
 	<tr>
 	<th>住所</th>
-	<td><%= customer.address %></td>
+	<td><%= @customer.address %></td>
 	</tr>
 
 	<tr>
 	<th>電話番号</th>
-	<td><%= customer.telephone %></td>
+	<td><%= @customer.telephone %></td>
 	</tr>
 
 	<tr>
 	<th>メールアドレス</th>
-	<td><%= customer.email %></td>
+	<td><%= @customer.email %></td>
 	</tr>
 
 </table>
