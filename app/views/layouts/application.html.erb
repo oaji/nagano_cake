@@ -31,14 +31,20 @@
 
     <div class="collapse navbar-collapse" id="navbarEexample8">
       <ul class="nav navbar-nav">
+
+        <% if customer_signed_in? %>
+        <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+        <% else %>
         <li><%= link_to 'ログイン', new_customer_session_path %></li>
-        <li><%= link_to 'ログアウト', destroy_customer_session_path %></li>
         <li><%= link_to '会員登録', new_customer_registration_path %></li>
+        <%end%>
       </ul>
-      <p class="navbar-text navbar-left">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
+      <% if customer_signed_in? %>
+      <p class="navbar-text navbar-left">ようこそ <%= link_to customers_customers_path(current_customer) %> さん。</p>
     </div>
   </div>
 </nav>
+<% end %>
 
     <%= yield %>
   </body>
