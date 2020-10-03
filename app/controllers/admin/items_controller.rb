@@ -3,7 +3,7 @@ class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin!
 
   def index
-    @items = Product.all # page(params[:page]).reverse_order
+    @items = Item.all.page(params[:page]).reverse_order
   end
 
   def new
@@ -11,11 +11,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @item = item.new(item_params)
+    @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_item_index_path(@item.id), notice:'商品を作成しました'
+      redirect_to admin_items_path(@item), success:"商品登録に成功しました"
     else
-      flash[:warning] = "入力内容を確認してください"
+      flash.now[:danger]="商品登録に失敗しました"
       render 'new'
     end
   end
@@ -32,14 +32,19 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:success] = "更新に成功しました"
-      render 'edit'
+      edirect_to admin_items_path(@item)
     end
+      render "edit"
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:genre_id, :name, :image, :description, :price, :sales_status)
+    params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :sales_status, :description)
+  end
+
+  def set_genres
+    @genres = Genre.where(is_valid: true)
   end
 
 end
