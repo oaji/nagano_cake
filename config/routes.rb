@@ -20,9 +20,10 @@ Rails.application.routes.draw do
 
     resources :customers,only:[:index, :show, :edit, :update]
 
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+
     resources :genres, only: [:edit, :index, :create, :update]
 
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
     get 'admins/top'
 

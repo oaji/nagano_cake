@@ -85,4 +85,4 @@ gem 'ancestry'
 
 gem 'ransack'
 
-
+gem 'kaminari'
