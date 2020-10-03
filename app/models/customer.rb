@@ -20,8 +20,4 @@ class Customer < ApplicationRecord
      super && (self.is_deleted == false)
     end
 
-   def first_family_name
-   	self.first_name + self.family_name
-   end
-
 end

@@ -1,19 +1,16 @@
 class Customers::CustomersController < ApplicationController
-	before_action :authenticate_customer!
-
-	def index
-	end
+	#before_action :authenticate_customer!
 
 	def show
-		@customer == current_customer
+		@customer = current_customer
 	end
 
 	def edit
-
-		@customer == current_customer
+		@customer = current_customer
 	end
 
 	def update
+		@customer = current_customer
 		if @customer.update(customer_params)
 			redirect_to customers_customers_path,notice: "会員情報変更しました"
 		else
@@ -24,8 +21,8 @@ class Customers::CustomersController < ApplicationController
 	def complete
 	end
 
-	def hide
-		@customer == current_customer
+	def update
+		@customer = current_customer
         #is_deletedカラムにフラグを立てる(defaultはfalse)
         @customer.update(is_deleted: true)
         #ログアウトさせる

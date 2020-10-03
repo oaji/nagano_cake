@@ -1,17 +1,12 @@
 <h2>退会ページ</h2>
 
 <!--退会するボタン-->
-	<% if current_customer_signed_in? %>
-	<%= link_to customers_users_hide_path, method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-	<p>ボタン</p>
-	<% end %>
-
+<% if current_customer %>
+	 <%= link_to "退会", customer_hide_path(current_user), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+<% end %>
 
 <!--退会しないボタン-->
-    <%= link_to customers_customers_path do %>
-		<p>ボタン</p>
-	<% end %>
-
-
-
+<%= link_to customers_path do %>
+	<p>ボタン</p>
 <% end %>
+

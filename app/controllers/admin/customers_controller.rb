@@ -2,8 +2,6 @@ class Admin::CustomersController < ApplicationController
 
   def index
   	@customers = Customer.all
-  	@customer = Customer.find(params[:id])
-  	@customer_name = @customer.first_family_name
   end
 
   def show
@@ -16,7 +14,7 @@ class Admin::CustomersController < ApplicationController
 
   def update
   	@customer = Customer.find(params[:id])
-  	if @customer.update!(customer_params)
+  	if @customer.update(customer_params)
   		redirect_to admin_customer(@customer), notice: "Updated customer's infomation successfully."
   	else
   		@customer = Customer.find(params[:id])
