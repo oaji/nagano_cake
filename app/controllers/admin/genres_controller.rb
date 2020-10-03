@@ -37,5 +37,4 @@ class Admin::GenresController < ApplicationController
 		params.require(:genre).permit(:name, :is_active)
 	end
 
-
 end

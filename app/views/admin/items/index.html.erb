@@ -1,6 +1,6 @@
 <h2>商品一覧画面</h2>
   <div class="new-btn-wrap">
-   <%= link_to "商品登録", admin_items_new_path, class: "btn btn-primary btn-new-register btn-lg"; %>
+   <%= link_to "商品登録", new_admin_item_path, class: "btn btn-primary btn-new-register btn-lg"; %>
   </div>
   <table class="table">
     <thead>
@@ -26,11 +26,8 @@
   </table>
   <div class="row text-center">
     <!-- ページネーションを表示 -->
-    <!-- gim kaminari 必要 -->
     <%= paginate @items, class: "paginate" %>
         </div>
     </div>
   </div>
 </div>
-
-

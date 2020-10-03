@@ -1,12 +1,7 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: customer_registration_path) do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :first_name %>名<br />
-    <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
-  </div>
 
   <div class="field">
     <%= f.label :family_name %>姓<br />
@@ -14,13 +9,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :first_name_kana %>カナ<br />
-    <%= f.text_field :first_name_kana, autofocus: true, class: "first_name_kana" %>
+    <%= f.label :first_name %>名<br />
+    <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
   </div>
 
   <div class="field">
     <%= f.label :family_name_kana %>カナ<br />
     <%= f.text_field :family_name_kana, autofocus: true, class: "family_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>カナ<br />
+    <%= f.text_field :first_name_kana, autofocus: true, class: "first_name_kana" %>
   </div>
 
   <div class="field">

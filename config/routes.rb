@@ -14,14 +14,16 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
   }
 
-  scope module: :admin do
+  namespace :admin do
+
     resources :orders,only:[:index, :show, :update]
 
     resources :customers,only:[:index, :show, :edit, :update]
 
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+
     resources :genres, only: [:edit, :index, :create, :update]
 
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
     get 'admins/top'
 

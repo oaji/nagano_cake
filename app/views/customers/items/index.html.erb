@@ -5,7 +5,7 @@
       <strong>ジャンルで検索</strong>
     </span>
     <% @genres.each do |genre| %>
-      <%= link_to root_path(genre: genre.id) do %>
+      <%= link_to admin_item_genres_path(genre: genre.id) do %>
         <span style = "background-color: #2D714C" class="badge"><%= genre.name %></span>
       <% end %>
 
