@@ -69,7 +69,6 @@ gem "refile-mini_magick"
 
 gem 'therubyracer'
 
-
 gem 'payjp'
 
 gem 'enum_help'

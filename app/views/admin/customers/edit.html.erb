@@ -1,4 +1,4 @@
-<h1>〜さんの会員情報編集</h1>
+<h1><%= @customer.family_name %><%= @customer.first_name%>さんの会員情報編集</h1>
 
 <table class="table">
 	<%= form_with model: @customer, url:edit_admin_customer_path(@customer), method: :patch, local: true do |f| %><!--local: trueにすることで非同期で行わないようにしている-->
@@ -80,7 +80,7 @@
 		  <tr>
 		  	<td>
 			  	<div class="actions">
-					<%= f.submit %>
+					<%= f.submit class: "btn btn-primary col-xs-12" %>
 				</div>
 			<td>
 		  </tr>

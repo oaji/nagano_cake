@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
-  end
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+  # end
 
 
 
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 	private
 #sign_up時の登録情報追加
     def configure_permitted_parameters
-	# devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :profle_image, :email, :postal_code, :prefecture_code, :city, :building])
+	devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name, :first_name, :first_name_kana,:family_name_kana, :post_code, :address, :telephone,:email])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password]) # ログイン時はnameを使用
     end
 end

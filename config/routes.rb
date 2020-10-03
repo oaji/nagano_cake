@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
   }
 
-  scope module: :admin do
+  namespace :admin do
+
     resources :orders,only:[:index, :show, :update]
 
     resources :customers,only:[:index, :show, :edit, :update]
@@ -31,7 +32,6 @@ Rails.application.routes.draw do
 
   scope module: :customers do
 
-
   resources :addresses, only: [:index, :destroy, :edit, :update]
 
   resources :orders, only: [:new, :create, :index, :show]
@@ -42,9 +42,12 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
-  resource :customers,only: [:show,:edit,:update]
+  resource :customers ,only: [:show, :update]
+  get '/customer/edit/' => 'customers#edit', as: 'edit_customer'
 
-  patch "/customers/hide" => "customers#hide"
+  get '/customers/hide' => 'customers#hide'
+  patch '/customers/hide' => 'customers#update'
+  get '/customers/complete' => 'customers#complete'
 
 
   end

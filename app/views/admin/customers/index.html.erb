@@ -11,12 +11,31 @@
 	</thead>
 
 	<tbody>
-		<% @customers.each do |customer| %>
+		<% @customers.each do |customer| %><!--ブロック変数を二つ入れる？-->
 		<tr>
-			<td><%= customer.id %></td>
-			<td><%= link_to customer.---,admin_customer_path(customer.id) %></td>
-			<td><%= customer.email %></td>
-			<td><%= customer.is_active %></td>
+			<td>
+				<%= customer.id %>
+			</td>
+
+			<td>
+				<%= link_to customers_path(customer.id) do %>
+					<%= customer.family_name %><%= customer.first_name %>
+				<% end %>
+			</td>
+
+			<td>
+				<%= customer.email %>
+			</td>
+
+			<td>
+				<% if customer.is_active == true %> <!--''で囲うと文字列になってしまうので値だけ記述-->
+		 			<h5>有効</h5>
+		 		<% else %>
+		 			<h5>無効</h5>
+		 		<% end %>
+		 	</td>
+
+
 		</tr>
 		<% end %>
 	</tbody>
