@@ -24,24 +24,24 @@ class Customers::ItemsController < ApplicationController
      # ジャンルの有効無効ステータスが有効のものだけ探す/除外検索
     @genres = Genre.where(is_active: true)
 
-    #買い物はできないが、詳細ページの閲覧はできる。
-    if current_user.nil?
-		  items = CartItem.all
-    else
-		  items = current_user.cart_items
-    end
+    # #買い物はできないが、詳細ページの閲覧はできる。
+    # if current_user.nil?
+		  # items = CartItem.all
+    # else
+		  # items = current_user.cart_items
+    # end
 
   end
 
    # ジャンル検索機能
   def search
+    @item = Item.all
     # パラメーターで渡ってきたジャンルidを元に、Item内のgenre_idと完全一致する商品情報を取得している。
-    @items = Item.where(genre_id: params[:format]).page(params[:page]).per(8)
+    @items = Item.where(genre_id: params[:genre_id],is_active: true).page(params[:page]).per(8)
      # 検索してきたジャンルの商品数をカウント
-    @quantity = Item.where(genre_id: params[:format]).count
+    @quantity = Item.where(genre_id: params[:genre_id]).count
     @genres = Genre.where(is_active: true)
-     # renderを使用してviewファイルを表示したときにはactionを呼び出し処理をしているわけではないため、上記のように必要な変数を用意しておく必要がある、
-    render 'index'
+    @genre = Genre.find(params[:genre_id])
   end
 
 
