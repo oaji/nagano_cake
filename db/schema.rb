@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_142624) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active"
+    t.boolean "is_active", default: true, null: false
     t.string "first_name"
     t.string "first_name_kana"
     t.string "family_name"
@@ -100,17 +100,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_142624) do
     t.integer "deliver_fee"
     t.integer "order_status"
     t.integer "total_payment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.boolean "is_active"
-    t.string "image_id"
-    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
