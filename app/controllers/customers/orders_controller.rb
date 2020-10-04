@@ -6,6 +6,7 @@ class Customers::OrdersController < ApplicationController
   end
 
   def confirm
+    
     @order = Order.new(order_params)
     if
     render 'new'
@@ -22,6 +23,7 @@ class Customers::OrdersController < ApplicationController
     else
       @order = Order.new
       render 'new'
+    end
   end
 
   def index
@@ -54,4 +56,5 @@ class Customers::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit()
   end
+end
 end

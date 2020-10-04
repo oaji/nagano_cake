@@ -1,12 +1,11 @@
 <div class="container">
-<h1>注文履歴詳細</h1>
-<h2>注文情報</h2>
-	<table border="1">
+
+<h1>注文詳細履歴</h1>
+	<h2>注文情報</h2>
+	<table border='1'>
 		<tr>
-			<th>注文日</th><td><%= created_at %></td>
-			<th>配送日</th><td><%= @order.post_code(@				order) %></td>
-						  <td><%= @order.addressee %></td>
-						  <td><%= @order.name %></td>
+			<th>注文日</th><td><%= @order.created_at %></td>
+			<th>配送先</th><td><%= @order.address %></td>
 			<th>支払方法</th><td><%= @order.how_to_pay %></td>
 			<th>ステータス</th><td><%= @order.order_status %></td>
 		</tr>
