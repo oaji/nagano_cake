@@ -1,21 +1,2 @@
-<div class="row">
-	 <!-- ジャンル検索（パーシャル） -->
-  <%= render "genre_search", genres: @genres %>
- 
-	<div class="col-xs-5" style ="margin: 100px 0 100px 0">
-		<%= attachment_image_tag @item, :image,style: "width:100%; "%>
-	</div>
-
-	<h3><%= @item.name %></h3>
-	<p><%= @item.introduction%></p>
-	<!-- application_helper (税込価格	) -->
-	<h4><%= (@item.price*1.10).round %>
-		<span>円(税込価格)</span>
-	</h4>
-	<!-- #選択型のプルダウンメニュー -->
-	<%= form_for(@cart_item) do |f| %>
-		<%= f.hidden_field :item_id %>
-		<%= f.submit "カートに入れる" %>
-		<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
-	<% end %>
-</div>
+<h1>Customers::Items#show</h1>
+<p>Find me in app/views/customers/items/show.html.erb</p>
