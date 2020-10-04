@@ -1,67 +1,62 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-  }
-  devise_for :customers, controllers: {
-  sessions:      'customers/sessions',
-  passwords:     'customers/passwords',
-  registrations: 'customers/registrations'
-  }
+  root :to => 'customers/top#top'
+  get 'customers/top/about'
+
+  # devise_for :admins, controllers: {
+  # sessions:      'admins/sessions',
+  # passwords:     'admins/passwords',
+  # registrations: 'admins/registrations'
+  # }
+
+  # devise_for :customers, controllers: {
+  # sessions:      'customers/sessions',
+  # passwords:     'customers/passwords',
+  # registrations: 'customers/registrations'
+  # }
+
+  devise_for :admins, skip: :all #これに上のdevise_forを消して、書き換える
+  devise_scope :admin do
+  get '/admins/sign_in' => 'admins/registrations#new'
+  post '/admins/sign_in' => 'admins/registrations#create'
+  get '//admins/sign_out' => 'admins/sessions#destroy'
+  end
+
+  devise_for :customers, skip: :all #下部に定義しているルーティング以外消す技
+  devise_scope :customer do
+  get '/customers/sign_up' => 'customers/registrations#new'
+  post '/customers/sign_up' => 'customers/registrations#create'
+  get '/customers/sign_in' => 'customers/sessions#new'
+  post '/customers/sign_in' => 'customers/sessions#create'
+  delete '/customers/sign_out' => 'customers/sessions#destroy'
+  end
 
   namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/update'
+    resources :orders,only:[:index, :show, :update]
+    resources :customers,only:[:index, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:edit, :index, :create, :update]
+    get 'admins/top' => 'admins/top' #右側抜けてた
   end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
+
+
+
+  scope module: :customers do
+  resources :addresses, only: [:index, :destroy, :edit, :update]
+  resources :orders, only: [:new, :create, :index, :show]
+  get 'orders/confirm'
+  get 'orders/complete'
+  resources :cart_items, only: [:index, :create, :edit, :update]
+  resources :items, only: [:index, :show]
+  resource :customers
+  # get '/customer/edit/' => 'customers#edit', as: 'edit_customer'  ◀︎deviseのパス変更したら消す。
+  # get '/customer' => 'customers#show',as: 'customer'
+  get '/customers/hide' => 'customers#hide'
+  patch '/customers/complete' => 'customers#complete'
+
+
   end
-  namespace :admin do
-    get 'genres/edit'
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  namespace :admin do
-    get 'admins/top'
-  end
-  namespace :customers do
-    get 'addresses/index'
-    get 'addresses/destroy'
-    get 'addresses/edit'
-    get 'addresses/update'
-  end
-  namespace :customers do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :customers do
-    get 'cart_items/index'
-    get 'cart_items/create'
-    get 'cart_items/edit'
-    get 'cart_items/update'
-  end
-  namespace :customers do
-    get 'items/index'
-    get 'items/show'
-  end
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

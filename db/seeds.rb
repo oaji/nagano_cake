@@ -4,4 +4,14 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+ Customer.create!(
+ 	family_name:'山田',
+ 	first_name:'太郎',
+ 	family_name_kana:'ヤマダ',
+ 	first_name_kana:'タロウ',
+ 	post_code:'123-4567',
+ 	address:'東京都世田谷区3333',
+ 	telephone:'0000000',
+ 	email:'ooo@example.com',
+ 	password: 'oooooo'
+ )
