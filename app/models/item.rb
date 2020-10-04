@@ -10,11 +10,9 @@ class Item < ApplicationRecord
 	# ジャンルとの紐付け
 	belongs_to :genre
 
-	belongs_to :admin
-
 	with_options presence: true do
-    validates :image
-    validates :name, length: {minimum: 1, maximum:15}
+    # validates :image
+   	validates :name, length: {minimum: 1, maximum:15}
 	validates :introduction, length: { maximum: 200 }
     validates :genre_id
     validates :price, numericality: true

@@ -1,4 +1,7 @@
 <div class="row">
+	 <!-- ジャンル検索（パーシャル） -->
+  <%= render "genre_search", genres: @genres %>
+ 
 	<div class="col-xs-5" style ="margin: 100px 0 100px 0">
 		<%= attachment_image_tag @item, :image,style: "width:100%; "%>
 	</div>
@@ -6,7 +9,7 @@
 	<h3><%= @item.name %></h3>
 	<p><%= @item.introduction%></p>
 	<!-- application_helper (税込価格	) -->
-	<h4><%= addTax(@item.price)%>
+	<h4><%= (@item.price*1.10).round %>
 		<span>円(税込価格)</span>
 	</h4>
 	<!-- #選択型のプルダウンメニュー -->

@@ -1,4 +1,6 @@
-<h2>商品一覧画面</h2>
+<div class="container">
+
+  <h1 style="margin-top: 60px;">商品一覧</h1>
   <div class="new-btn-wrap">
    <%= link_to "商品登録", new_admin_item_path, class: "btn btn-primary btn-new-register btn-lg"; %>
   </div>
@@ -19,7 +21,13 @@
           <td><%= link_to item.name, admin_item_path(item.id) %></td>
           <td><%= "#{item.price}円" %></td>
           <td><%= item.genre.name %></td>
-          <td><%= item.sales_status ? "販売中" : "販売停止中" %></td>
+          <td>
+        <% if item.is_active? %>
+          <span class="badge" style="background:#8BCE9A">販売中</span>
+        <% else %>
+          <span class="badge" style="background:#D52438">販売停止</span>
+        <% end %>
+      </td>
         </tr>
       <% end %>
     </tbody>
@@ -27,7 +35,5 @@
   <div class="row text-center">
     <!-- ページネーションを表示 -->
     <%= paginate @items, class: "paginate" %>
-        </div>
-    </div>
   </div>
 </div>

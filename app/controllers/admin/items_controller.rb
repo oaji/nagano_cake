@@ -32,15 +32,17 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:success] = "更新に成功しました"
-      edirect_to admin_items_path(@item)
-    end
+      redirect_to admin_items_path(@item)
+    else
+      flash.now[:danger]="更新に失敗しました"
       render "edit"
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :sales_status, :description)
+    params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :sales_status, :description, :is_active)
   end
 
   def set_genres
