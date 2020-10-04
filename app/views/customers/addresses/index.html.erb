@@ -1,20 +1,34 @@
 <div class="container">
-<table class="table table-striped">
-	<h1>配送先一覧</h1>
-		<tbody>
-			<% @addresses.each do |add| %>
-			<tr>
-				<td>
-					<%= add.post_code %>
+	<h1>配送先登録/一覧</h1>
+	<tbody>
+		<%= form_for(address) do |f| %>
+		<tr>
+			<td>郵便番号(ハイフンなし)<%= f.text_field_tag "post_code" %></td>
+			<td>住所<%= f.text_field_tag "addressee" %></td>
+			<td>宛名<%= f.text_field_tag "name" %>
+					<%= f.submit "登録する", class: "btn-success btn-lg" %>
+			</td>
+		</tr>
+		<% end %>
+		<table border="1">
+		<% @addresses.each do |add| %>
+		<tr>
+			<th>郵便番号</th><th><住所</th><th>宛名</th>
+		</tr>
+		<tr>
+			<td>
+				<%= add.post_code %>
+			</td>
+			<td>
+				<%= add.customer_address %>
+			</td>
+			<td><%= add.name %></td>
+			<td>
+				<%= link_to "編集する", addresses_edit_path(@address), class: "btn-primary edit_address_#{@address.id}" %>
+				<%= link_to "削除する", , method: :delete, date: {confirm: "本当に削除しますか？"}, class: "btn-danger destroy_address_#{@address.id}" %>
 				</td>
-				<td>
-					<%= add.customer_address %>
-				</td>
-				<td>
-					<%= link_to "編集", addresses_edit_path(@address) %>
-					<
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+		</tr>
+		<% end %>
+		</table>
+	</tbody>
 </div>

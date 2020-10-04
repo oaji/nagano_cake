@@ -13,7 +13,7 @@ class Customers::AddressesController < ApplicationController
   def update
   	@address = Address.find(params[:id])
   	@address.update(params[:id])
-	redirect_to addresses_path(@address), notice: "編集が完了しました"
+	  redirect_to addresses_path(@address), notice: "編集が完了しました"
   end
 
   def destroy

@@ -15,4 +15,3 @@
  	email:'ooo@example.com',
  	password: 'oooooo'
  )
-
