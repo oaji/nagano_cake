@@ -12,24 +12,25 @@ class Customers::CustomersController < ApplicationController
 	def update
 		@customer = current_customer
 		if @customer.update(customer_params)
-			redirect_to customers_customers_path,notice: "会員情報変更しました"
+			redirect_to customers_path,notice: "会員情報変更しました"
 		else
 			render :edit
 		end
 	end
 
-	def complete
-	end
-
-	def update
+	def hide
 		@customer = current_customer
+    end
+
+    def complete
+    	@customer = current_customer
         #is_deletedカラムにフラグを立てる(defaultはfalse)
         @customer.update(is_deleted: true)
         #ログアウトさせる
         reset_session
         flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
         redirect_to root_path
-    end
+	end
 
 
 

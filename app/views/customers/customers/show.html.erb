@@ -1,59 +1,54 @@
 <div class="container">
-
-	<%= link_to ' logout', destroy_customer_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %>
-
-		<h1 style="margin-top: 50px;">マイページ</h1>
+	<h1 style="margin-top: 60px;">マイページ</h1>
 		<h3>登録情報</h3>
 		<!-- 登録情報変更へのリンクボタン↓(リンク) -->
-		<%= link_to edit_customer_path do %>
-			<p>ボタン</p>
-		<% end %>
+		<%= link_to '編集する',edit_customers_path, class: 'btn btn-primary' %>
 		<!-- パスワード変更ボタン(リンク) -->
-		<%= link_to edit_customer_password_path do %>
-			<p>ボタン</p>
-		<% end %>
+		<%#= link_to 'パスワードを変更する', edit_customer_password_path, class: 'btn btn-primary' %>
 
+		<!--顧客情報-->
+		<table class="table table-bordered">
+			<tbody class="table table-bordered">
+				<tr>
+					<th>名前</th>
+					<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
+				</tr>
+				<tr>
+					<th>カナ</th>
+					<td><%= @customer.family_name %><%= @customer.first_name %></td>
+				</tr>
 
-	<!--顧客情報-->
-	<table class="table">
-		<thead>
-			<tr>
-				<th>お客様情報</th>
-			</tr>
-		</thead>
+				<tr>
+					<th>郵便番号</th>
+					<td><%= @customer.post_code %></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><%= @customer.address %></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><%= @customer.telephone %></td>
+				</tr>
+				<tr>
+					<th>名前</th>
+					<td><%= @customer.email %></td>
+				</tr>
+			</tbody>
 
-			<tr>
-				<th>名前</th>
-				<th><%= @customer.family_name_kana %><%= @customer.first_name_kana %></th>
-				<th><%= @customer.family_name %><%= @customer.first_name %></th>
-			</tr>
+		</table>
 
-			<tr>
-				<th>住所</th>
-				<th><%= @customer.post_code %></th>
-				<th><%= @customer.address %></th>
-				<th>電話番号</th>
-				<th><%= @customer.telephone %></th>
-				<th>名前</th>
-				<th><%= @customer.email %></th>
-			</tr>
-
-			<!-- 配送先一覧へのリンクボタン↓(リンク) -->
-			<tr>
-				<th><%= link_to addresses_path do %>
-						<p>ボタン</p>
-					<% end %>
-				</th>
-			</tr>
-			<!-- 注文履歴一覧へのリンクボタン↓(リンク) -->
-			<tr>
-				<th><%= link_to orders_path do %>
-						<p>ボタン</p>
-					<% end %>
-				</th>
-			</tr>
-
-
-	</table>
+		<table>
+				<!-- 配送先一覧へのリンクボタン↓(リンク) -->
+				<tr>
+					<th>配送先</th>
+					<td><%= link_to '一覧を見る',addresses_path, class: 'btn btn-primary'  %></td>
+				</tr>
+				<!-- 注文履歴一覧へのリンクボタン↓(リンク) -->
+				<tr>
+					<th>注文履歴</th>
+					<td><%= link_to '一覧を見る',orders_path, class: 'btn btn-primary' %></td>
+				</tr>
+		</table>
 
 </div>

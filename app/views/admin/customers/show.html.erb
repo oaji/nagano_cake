@@ -1,13 +1,19 @@
 
-<h1><%= @customer.family_name %><%= @customer.first_name%>さんの会員詳細</h1>
+<h1 style="margin-top: 60px;"><%= @customer.family_name %><%= @customer.first_name%>さんの会員詳細</h1>
 
 
-<table class="table">
+<table>
 
 	<tr>
 	<th>顧客ID</th>
 	<td><%= @customer.id %></td>
-	<td><%= @customer.is_valid %></td>
+		<td>
+			<%if @customer == true %>
+				<h5>有効</h5>
+			<% else %>
+				<h5>無効</h5>
+			<% end %>
+		</td>
 	</tr>
 
 	<tr>
@@ -17,7 +23,7 @@
 
 	<tr>
 	<th>フリガナ</th>
-	<td><%= @customer.family_name %><%= @customer.first_name %></td>
+	<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
 	</tr>
 
 	<tr>
@@ -42,10 +48,10 @@
 
 	<tr>
 		<td>
-			<%= link_to '編集する', edit_admin_customer_path(@customer.id) %>
+			<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary' %>
 		</td>
 		<td>
-			<%= link_to '注文履歴一覧', admin_orders_path %>
+			<%= link_to '注文履歴一覧', admin_orders_path,class: 'btn btn-primary' %>
 		</td>
 	</tr>
 
