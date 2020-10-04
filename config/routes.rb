@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :index, :show]
   get 'orders/confirm'
   get 'orders/complete'
+  get 'items/search/:genre_id' => 'items#search', as: 'search'
   resources :cart_items, only: [:index, :create, :edit, :update]
   resources :items, only: [:index, :show]
   resource :customers
