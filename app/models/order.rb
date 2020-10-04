@@ -1,11 +1,11 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	has_many :cart_items dependent: :destroy
+	has_many :cart_items, dependent: :destroy
 
-    validate :name, presence: true
-    validate :addressee, presence: true
-    validate :post_code, presence: true
-    validate :how_to_pay, presence: true
+    validates :name, presence: true
+    validates :addressee, presence: true
+    validates :post_code, presence: true
+    validates :how_to_pay, presence: true
 
     enum how_to_pay: {
     	キャッシュカード: 0,
