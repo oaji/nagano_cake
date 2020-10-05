@@ -12,10 +12,11 @@
 .b th{
 	padding: 10px 5px;
 	width: auto;
+	empty-cells: show;
 }
 
 .b td{
 	padding:10px 0;
 	width: auto;
-	empty-cells: show;
+
 }
