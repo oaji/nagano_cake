@@ -15,6 +15,12 @@
  	email:'ooo@example.com',
  	password: 'oooooo'
  )
+
+ Address.create!(
+ 	post_code:'333-3333',
+ 	customer_address:'東京都新宿区100',
+ 	name:'一郎',
+ 	)
 # Order.create!(
 #  	post_code:'000-0000'
 #     customer_address:'00-00'
