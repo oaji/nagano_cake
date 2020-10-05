@@ -1,12 +1,26 @@
 class Customers::CartItemsController < ApplicationController
 	before_action :setup_cart_item!,only: [:create,:update,:destroy]
 
+
 	def index
 		@cart_items = CartItem.all
 	end
 
-	def create#ここ以外
+  def create
+
+  	@cart_item = current_customer.cart_items.new(params_cart_item)
+
+    if @cart_item.save
+      flash[:notice] = "#{@cart_item.item.name}をカートに追加しました"
+      redirect_to cart_items_path
+    else
+      @item = Item.find(params[:cart_item][:item_id])
+      @cart_item = CartItem.new
+      flash[:alert] = "個数を選択してください"
+      render ("customer/items/show")
     end
+
+  end
 
     def update#カート内商品データ更新
     	@cart_items.update(quantity: params[:quantity].to_i)
@@ -38,4 +52,10 @@ class Customers::CartItemsController < ApplicationController
    		@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   	end
 
+  def params_cart_item
+  	params.require(:cart_item).permit(:customer_id, :quantity, :item_id, :price)
+  end
+
+
 end
+

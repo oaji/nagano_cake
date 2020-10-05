@@ -1,34 +1,50 @@
 <div class="container">
-	<h1>配送先登録/一覧</h1>
-	<tbody>
-		<%= form_for(address) do |f| %>
-		<tr>
-			<td>郵便番号(ハイフンなし)<%= f.text_field_tag "post_code" %></td>
-			<td>住所<%= f.text_field_tag "addressee" %></td>
-			<td>宛名<%= f.text_field_tag "name" %>
-					<%= f.submit "登録する", class: "btn-success btn-lg" %>
-			</td>
-		</tr>
-		<% end %>
-		<table border="1">
-		<% @addresses.each do |add| %>
-		<tr>
-			<th>郵便番号</th><th><住所</th><th>宛名</th>
-		</tr>
-		<tr>
-			<td>
-				<%= add.post_code %>
-			</td>
-			<td>
-				<%= add.customer_address %>
-			</td>
-			<td><%= add.name %></td>
-			<td>
-				<%= link_to "編集する", addresses_edit_path(@address), class: "btn-primary edit_address_#{@address.id}" %>
-				<%= link_to "削除する", , method: :delete, date: {confirm: "本当に削除しますか？"}, class: "btn-danger destroy_address_#{@address.id}" %>
+<div class="row">
+	<br>
+	<br>
+	<h2>配送先登録/一覧</h2>
+	<p><%= flash[:notice] %></p>
+	<thead>
+		<table style="border:none" class="a">
+			<%= form_for(@address) do |f| %>
+			<tr>
+				<td>郵便番号(ハイフンなし)</td><th><%= f.text_field :post_code %></th>
+			</tr>
+			<tr>
+				<td>住所</td><th><%= f.text_field :customer_address %></th>
+			</tr>
+			<tr>
+				<td>宛名</td><th><%= f.text_field :name %></th>
+						<th><%= f.submit "登録する", class: "btn-success btn-sm" %></th>
 				</td>
-		</tr>
-		<% end %>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<% end %>
+		</table>
+	</thead>
+	<br>
+	<tbody>
+		<table class="b" border="1">
+			<% @addresses.each do |add| %>
+			<tr>
+				<th>郵便番号</th><th>住所</th><th>宛名</th>
+			</tr>
+			<tr>
+				<td>
+					<%= add.post_code %>
+				</td>
+				<td>
+					<%= add.customer_address %>
+				</td>
+				<td><%= add.name %></td>
+				<td>
+					<%= link_to "編集する", edit_address_path(add), class: "btn-primary" %>
+					<%= link_to "削除する", address_path(add), method: :delete, date: {confirm: "本当に削除しますか？"}, class: "btn-danger" %>
+				</td>
+			</tr>
+			<% end %>
+		</div>
 		</table>
 	</tbody>
+</div>
 </div>

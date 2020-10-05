@@ -11,9 +11,12 @@ end
 
 private
 def match(model,content)
-	if model == 'user'
-		customer.where(name: content)
-	elsif model == 'book'
+	if model == 'genre'
+		Genre.where(item: content)
+	elsif model == 'item'
 		item.where(title: content)
 	end
 end
+
+def partical(model, content)
+ if model == 'item'
