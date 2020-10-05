@@ -11,8 +11,6 @@ class Customers::ItemsController < ApplicationController
     @items = Item.where(is_active: true).page(params[:page]).per(8)
     # quantity => 総量/.count =>カウントメソッド、配列の要素の数を数えるための機能
     @quantity = Item.count
-    # where=条件を絞り込むメソッド 複数取得する
-     # ジャンルの有効無効ステータスが有効のものだけ探す/除外検索
     @genres = Genre.where(is_active: true)
   end
 
