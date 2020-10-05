@@ -6,25 +6,23 @@ class Customers::CartItemsController < ApplicationController
 		@cart_items = CartItem.all
 	end
 
-  def create
+  	def create
+  		@cart_item = current_customer.cart_items.new(params_cart_item)
 
-  	@cart_item = current_customer.cart_items.new(params_cart_item)
+    	if @cart_item.save
+      	flash[:notice] = "#{@cart_item.item.name}をカートに追加しました"
+      	redirect_to cart_items_path
+    	else
+      	@item = Item.find(params[:cart_item][:item_id])
+      	@cart_item = CartItem.new
+      	flash[:alert] = "個数を選択してください"
+      	render ("customer/items/show")
+    	end
+  	end
 
-    if @cart_item.save
-      flash[:notice] = "#{@cart_item.item.name}をカートに追加しました"
-      redirect_to cart_items_path
-    else
-      @item = Item.find(params[:cart_item][:item_id])
-      @cart_item = CartItem.new
-      flash[:alert] = "個数を選択してください"
-      render ("customer/items/show")
-    end
-
-  end
-
-    def update#カート内商品データ更新
+  	def update#カート内商品データ更新
     	@cart_items.update(quantity: params[:quantity].to_i)
-    	redirect_to current_cart
+    	redirect_to cart_items_path
 	end
 
 	def destroy #一点消す
@@ -33,7 +31,7 @@ class Customers::CartItemsController < ApplicationController
     	redirect_to cart_items_path
 	end
 
-	def destroy_all #カートない商品全消し
+	def destroy_all #カート内商品全消し
 		@cart = current_cart
     	@cart.destroy
     	session[:item_id] = nil

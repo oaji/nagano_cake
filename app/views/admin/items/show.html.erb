@@ -38,9 +38,7 @@
 			  	</tr>
 			</table>
 
-			<%= link_to edit_admin_item_path(@item.id) do%>
-				<label class="btn btn-info">編集する</label>
-		  	<% end %>
+			<%= link_to '編集する',edit_admin_item_path(@item.id) ,class: 'btn btn-info', data: {"turbolinks"=>false} %>
 	  	</div>
 	</div>
 </div>
