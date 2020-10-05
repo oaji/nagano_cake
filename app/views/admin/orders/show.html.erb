@@ -1,8 +1,50 @@
 <div class="container">
-<h1>管理画面：注文詳細</h1>
-	<%= @order.name %>
-	<%= @order.post_code(@order) %>
-	<%= @order.total_payment(@order) %>
-	<%= select :order, :order_status, Order.order_statuss.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %>
-	<%= link_to "戻る", orders_path, class: "back" %>
+<h1>注文履歴詳細</h1>
+	<tr>
+		<th>購入者</th><td><%= @order.name %></td>
+	</tr>
+	<tr>
+		<th>配送先</th><td><%= @order.post_code %>
+						  <%= @order.address %>
+						  <%= @order.name %>
+					  </td>
+	</tr>
+	<tr>
+		<th>支払方法</th><td><%= @order.how_to_pay %></td>
+	</tr>
+	<tr>
+		<th>注文ステータス</th><td><%= select :order, :order_status, Order.order_status.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %>
+			<div class="actions row">
+				<%= f.submit "更新", class: "btn-primary" %>
+			</div></td>
+	</tr>
+
+<table border="0">
+	<tr>
+		<th>商品名</th><th>単価</th><th>数量</th>
+		<th>小計</th><th>制作ステータス</th>
+	</tr>
+	<% @orders.each do |order| %>
+	<tr>
+		<td><%= @order.name %></td>
+		<td><%= @item.price %></td>
+		<td><%= %></td>
+		<td><%= select :order, :order_status, Order.order_status.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %></td>
+		<td>
+			<div class="actions row">
+				<%= f.submit "更新", class: "btn-primary" %>
+			</div>
+		</td>
+	</tr>
+</table>
+
+	<tr>
+		<th>商品合計</th><td><%= %></td>
+	</tr>
+	<tr>
+		<th>送料</th><td><%= deliver_fee %></td>
+	</tr>
+	<tr>
+		<th>請求金額合計</th><td><%= @order.total_payment %></td>
+	</tr>
 </div>

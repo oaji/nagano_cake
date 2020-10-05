@@ -16,3 +16,26 @@
  	password: 'oooooo'
  )
 
+ Address.create!(
+ 	post_code:'333-3333',
+ 	customer_address:'東京都新宿区100',
+ 	name:'一郎',
+ 	)
+# Order.create!(
+#  	post_code:'000-0000'
+#     customer_address:'00-00'
+#     name:'aaa'
+#     addressee:'0000'
+#     deliver_fee:'100'
+#     how_to_pay:'333'
+#  	)
+# 10.times do |number|
+# 	Order.create(order_id: "#{number}")
+# end
+# customer_id
+#       t.string :addressee
+#       t.string :name
+#       t.string :post_code
+#       t.string :send_to_address
+#       t.string :how_to_pay
+#       t.integer :deliver_fee

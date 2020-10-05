@@ -1,22 +1,23 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	has_many :cart_items dependent: :destroy
+	belongs_to :cart_items
+    belongs_to :item
 
-    validate :name, presence: true
-    validate :addressee, presence: true
-    validate :post_code, presence: true
-    validate :how_to_pay, presence: true
+    validates :name, presence: true
+    validates :addressee, presence: true
+    validates :post_code, presence: true
+    validates :how_to_pay, presence: true
 
     enum how_to_pay: {
-    	card: 0,
-    	bank: 1
+    	キャッシュカード: 0,
+    	銀行振込: 1
     }
 
     enum order_status: {
-    	waiting: 0,
-    	confirmation: 1,
-    	production: 2,
-    	preparation: 3,
-    	done: 4
+    	入金待ち: 0,
+    	入金確認: 1,
+    	制作中: 2,
+    	発送準備中: 3,
+    	発送済み: 4
     }
 end

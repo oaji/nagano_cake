@@ -42,10 +42,11 @@ Rails.application.routes.draw do
 
 
   scope module: :customers do
-  resources :addresses, only: [:index, :destroy, :edit, :update]
+  resources :addresses, only: [:index, :create, :destroy, :edit, :update]
   resources :orders, only: [:new, :create, :index, :show]
   get 'orders/confirm'
   get 'orders/complete'
+  get 'items/search/:genre_id' => 'items#search', as: 'search'
   resources :cart_items, only: [:index, :create, :edit, :update]
   resources :items, only: [:index, :show]
   resource :customers

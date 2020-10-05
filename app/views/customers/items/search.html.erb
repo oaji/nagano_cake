@@ -9,10 +9,10 @@
 
 
     <div class='col-xs-9'>
-      <h2>商品一覧</h2>
+      <h2><%= @genre.name %>一覧</h2>
 
       <span>
-        (全<%= @items.total_count %>件中　<%= @items.count %>件)
+        (全<%= @item.count %>件中　<%= @items.count %>件)
       </span>
       <div class="row">
         <% @items.each do |item| %>
