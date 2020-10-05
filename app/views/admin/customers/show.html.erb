@@ -8,7 +8,7 @@
 	<th>顧客ID</th>
 	<td><%= @customer.id %></td>
 		<td>
-			<%if @customer == true %>
+			<%if @customer.is_active == true %>
 				<h5>有効</h5>
 			<% else %>
 				<h5>無効</h5>
@@ -48,7 +48,7 @@
 
 	<tr>
 		<td>
-			<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary' %>
+			<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary', data: {"turbolinks"=>false} %>
 		</td>
 		<td>
 			<%= link_to '注文履歴一覧', admin_orders_path,class: 'btn btn-primary' %>
