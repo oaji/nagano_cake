@@ -3,18 +3,6 @@ Rails.application.routes.draw do
   root :to => 'customers/top#top'
   get 'customers/top/about'
 
-  # devise_for :admins, controllers: {
-  # sessions:      'admins/sessions',
-  # passwords:     'admins/passwords',
-  # registrations: 'admins/registrations'
-  # }
-
-  # devise_for :customers, controllers: {
-  # sessions:      'customers/sessions',
-  # passwords:     'customers/passwords',
-  # registrations: 'customers/registrations'
-  # }
-
   devise_for :admins, skip: :all #これに上のdevise_forを消して、書き換える
   devise_scope :admin do
   get '/admins/sign_in' => 'admins/registrations#new'
@@ -43,15 +31,18 @@ Rails.application.routes.draw do
 
   scope module: :customers do
   resources :addresses, only: [:index, :destroy, :edit, :update]
+
   resources :orders, only: [:new, :create, :index, :show]
   get 'orders/confirm'
   get 'orders/complete'
-  get 'items/search/:genre_id' => 'items#search', as: 'search'
-  resources :cart_items, only: [:index, :create, :edit, :update]
+
+  resources :cart_items,only: [:index, :create, :update, :destroy]
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
   resources :items, only: [:index, :show]
+  get 'items/search/:genre_id' => 'items#search', as: 'search'
+
   resource :customers
-  # get '/customer/edit/' => 'customers#edit', as: 'edit_customer'  ◀︎deviseのパス変更したら消す。
-  # get '/customer' => 'customers#show',as: 'customer'
   get '/customers/hide' => 'customers#hide'
   patch '/customers/complete' => 'customers#complete'
 
