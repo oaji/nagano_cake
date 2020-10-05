@@ -7,11 +7,17 @@ class Customers::ItemsController < ApplicationController
 
 
   def index
-  	@genres = Genre.all
-    @items = Item.where(is_active: true).page(params[:page]).per(8)
-    # quantity => 総量/.count =>カウントメソッド、配列の要素の数を数えるための機能
-    @quantity = Item.count
+
     @genres = Genre.where(is_active: true)
+    @items = []
+      @genres.each do |genre|
+        genre.items.each do |item|
+        if item.is_active == true
+            @items.push(item)
+        end
+      end
+    end
+
   end
 
 
