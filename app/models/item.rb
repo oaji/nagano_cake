@@ -10,8 +10,6 @@ class Item < ApplicationRecord
 	# ジャンルとの紐付け
 	belongs_to :genre
 
-	belongs_to :cart_item
-
 	with_options presence: true do
     # validates :image
    	validates :name, length: {minimum: 1, maximum:15}
