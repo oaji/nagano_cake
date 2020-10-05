@@ -1,21 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+  <div class="row" style="margin-top:60px">
      <p id="notice"><%= notice %></p> <!--サクセスメッセージ-->
-      <div class="row" style="margin-top:60px">
         <%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
           <%= render 'layouts/error', model: f.object %><!--エラーメッセージ -->
-          <div class="col-xs-5">
-            <h2>商品登録画面</h2>
-                      <!-- <div class="item-img">
-              <%= image_tag 'sample_image.jpeg', id: "file-preview", :size => '350x300' %>
-            </div> -->
+          <h2>商品登録画面</h2>
+              <div class="col-xs-5" style ="margin: 60px 0 60px 0">
+
+              <div class="item-img">
+                <%= image_tag 'no_image.png', id: "file-preview", :size => '350x300' %>
+              </div>
             <div class="item-new-form">
               <%= f.attachment_field :image %>
             </div>
 
           </div>
-          <div class="col-xs-5 col-xs-offset-2">
+          <div class="col-xs-6" style ="margin: 60px 0 60px 0">
             <table class="new-form-table">
               <tbody>
                 <tr>
