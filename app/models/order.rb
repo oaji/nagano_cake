@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	has_many :cart_items, dependent: :destroy
+	belongs_to :cart_items
+    belongs_to :item
 
     validates :name, presence: true
     validates :addressee, presence: true
