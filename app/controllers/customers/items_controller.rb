@@ -35,7 +35,7 @@ class Customers::ItemsController < ApplicationController
 
    # ジャンル検索機能
   def search
-    @item = Item.all
+    @item = Item.where(is_active: true)
     # パラメーターで渡ってきたジャンルidを元に、Item内のgenre_idと完全一致する商品情報を取得している。
     @items = Item.where(genre_id: params[:genre_id],is_active: true).page(params[:page]).per(8)
      # 検索してきたジャンルの商品数をカウント
