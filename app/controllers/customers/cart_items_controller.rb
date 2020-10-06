@@ -1,10 +1,7 @@
 class Customers::CartItemsController < ApplicationController
-	# before_action :setup_cart_item!,only: [:create,:update,:destroy]
-
 
 	def index
 		@cart_items = CartItem.all
-		@cart_item = (params[:id])
 	end
 
   	def create
@@ -23,9 +20,8 @@ class Customers::CartItemsController < ApplicationController
 
   	def update#カート内商品データ更新
   		@cart_items = CartItem.all
-  		@cart_item = (params[:id])
-    	@cart_item.update(quantity:params[:quantity].to_i)
-    	#@cart_items.@cart_item.update(quantity:params[:quantity].to_i)
+  		@cart_item = CartItem.find(params[:id])
+    	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
     	redirect_to cart_items_path
 	end
 
@@ -36,13 +32,9 @@ class Customers::CartItemsController < ApplicationController
 	end
 
 	def destroy_all #カート内商品全消し
-		@cart = current_cart
-    	@cart.destroy
-    	session[:item_id] = nil
-    		respond_to do |format|
-      		format.html { redirect_to cart_items_path, notice: 'カートが空になりました。' }
-      		format.json { head :no_content }
-      		end
+		@cart_item = CartItem.all
+		@cart_item.destroy_all
+		redirect_to cart_items_path
 	end
 
 
@@ -50,9 +42,6 @@ class Customers::CartItemsController < ApplicationController
 	private
 
 
-	# def setup_cart_item!
- #   		@cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
- #  	end
 
   def cart_item_params
   	params.require(:cart_item).permit(:customer_id, :quantity, :item_id, :price)

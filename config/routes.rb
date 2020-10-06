@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :customers,only:[:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:edit, :index, :create, :update]
-    get 'admins/top' => 'admins/top' #右側抜けてた
+    get 'admins/top' => 'admins/top'
   end
 
 
@@ -37,8 +37,10 @@ Rails.application.routes.draw do
   get 'orders/confirm'
   get 'orders/complete'
 
+  # delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_items_destroy_all'
   resources :cart_items,only: [:index, :create, :update, :destroy]
-  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_items_destroy_all'
+
 
   resources :items, only: [:index, :show]
   get 'items/search/:genre_id' => 'items#search', as: 'search'
