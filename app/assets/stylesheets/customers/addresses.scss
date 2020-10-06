@@ -9,13 +9,35 @@
 	padding: 5px 5px
 }
 
+table.b{
+	width: 100%
+}
+
 .b th{
 	padding: 10px 5px;
 	width: auto;
+	background-color: #DDDDDD;
 }
 
 .b td{
-	padding:10px 0;
+	padding:10px 5px;
 	width: auto;
-	empty-cells: show;
+}
+
+.text-center{
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+
+.pagination>li>a:hover {
+  border-radius: 15px;
 }

@@ -3,6 +3,7 @@ class Customers::AddressesController < ApplicationController
   	@addresses = Address.all
   	@address = Address.new
   	@customer = current_customer
+    @addresses = Address.page(params[:page]).reverse_order
   end
 
   def create
@@ -15,6 +16,7 @@ class Customers::AddressesController < ApplicationController
       @address = Address.new
       render 'index'
     end
+    #byebug
   end
 
   def edit
@@ -24,7 +26,7 @@ class Customers::AddressesController < ApplicationController
 
   def update
   	@address = Address.find(params[:id])
-  	@address.update(params[:id])
+  	@address.update(address_params)
 	  redirect_to addresses_path(@address), notice: "編集が完了しました"
   end
 

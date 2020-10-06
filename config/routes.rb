@@ -27,8 +27,6 @@ Rails.application.routes.draw do
     get 'admins/top' => 'admins/top'
   end
 
-
-
   scope module: :customers do
 
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
