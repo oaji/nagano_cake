@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" style="margin-top:60px">
      <p id="notice"><%= notice %></p> <!--サクセスメッセージ-->
-        <%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
+        <%= form_with model: @item, url:admin_items_path, method: :post ,local:true do |f| %>
           <%= render 'layouts/error', model: f.object %><!--エラーメッセージ -->
           <h2>商品登録画面</h2>
               <div class="col-xs-5" style ="margin: 60px 0 60px 0">
@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                   <th>ジャンル</th>
-                  <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+                  <td><%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "--選択してください--" %></td>
                 </tr>
                 <tr>
                   <th>税抜き価格</th>
@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                   <th>販売ステータス</th>
-                  <td><%= f.select :is_active, [["販売停止中",true],["販売中",false]], include_blank: "--選択してください--" %></td>
+                  <td><%= f.select :is_active, [["販売中",true],["販売停止中",false]], include_blank: "--選択してください--" %></td>
                 </tr>
               </tbody>
             </table>

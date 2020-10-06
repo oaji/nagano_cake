@@ -1,24 +1,52 @@
-<h1 style="margin-top: 60px;">ショッピングカート</h1>
-<%= button_to 'カートを空にする', @cart, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: 'btn btn-danger' %>
-<table class="table">
-  <tr>
-  	<th></th>
-    <th>商品名</th>
-    <th>値段</th>
-    <th>個数</th>
-    <th>小計</th>
-  </tr>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
 
-  <% @cart_items.cart_items.each do |cart_item| %>
-	  <tr>
-	  	<td><%= attachment_image_tag cart_item, :image, size: "60x60",  fallback: "no_image.jpg"%></td>
-	  	<td><%= cart_item.name %></td>
-	  	<td><%= cart_item.price %></td>
-	  	<td><%= link_to '削除',cart_item_path(cart_item.id),method: :delete,class: 'btn btn-danger',"data-confirm" => "Are you sure?" %></td>
-	  </tr>
-  <% end %>
+			<h1 style="margin-top: 100px;">ショッピングカート</h1>
+				<%= link_to 'カートを空にする',cart_items_destroy_all_path,method: :delete,class: 'btn btn-danger',"data-confirm" => "Are you sure?", local: true %>
+				<table class="table">
+				  <tr>
+				  	<th></th>
+				    <th>商品名</th>
+				    <th>単価</th>
+				    <th>個数</th>
+				    <th>小計</th>
+				    <th></th>
+				  </tr>
+				<% @sum = 0 %>
+			  		<% @cart_items.each do |cart_item| %>
+					  <tr>
+					  	<td><%= attachment_image_tag cart_item.item, :image, size: "60x60",  fallback: "no_image.jpg"%></td>
+					  	<td><%= cart_item.item.name %></td>
+					  	<td><%= (cart_item.item.price*1.10).round %></td>
+						<% @sum += (cart_item.quantity*cart_item.item.price*1.10).round %>
+					  	<td>
+					  		<%= form_with model: cart_item,url:cart_item_path(cart_item.id), method: :patch, local: true do |f| %>
+					  		<%= f.number_field :quantity , value:cart_item.quantity, min:1 %>
+					  			<div class="actions">
+									<%= f.submit '変更', class: "btn btn-primary" %>
+								</div>
+					  		<% end %>
+					  	</td>
+					  	<td><%= (cart_item.item.price*cart_item.quantity*1.10).round %></td>
+					  	<td><%= link_to '削除',cart_item_path(cart_item.id),method: :delete,class: 'btn btn-danger',"data-confirm" => "Are you sure?" %></td>
+					  </tr>
 
-</table>
+					<% end %>
 
-<%= link_to '買い物を続ける', root_path, :class => 'btn btn-primary' %>
+				</table>
 
+
+				<%= link_to '買い物を続ける', root_path, :class => 'btn btn-primary' %>
+
+				<%= link_to '情報入力に進む', new_order_path, :class => 'btn btn-success' %>
+
+				<table class="float-right">
+					<tr>
+						<th><h4>合計金額</h4></th>
+						<td><%= @sum %></td>
+					</tr>
+			</table>
+		</div>
+	</div>
+</div>

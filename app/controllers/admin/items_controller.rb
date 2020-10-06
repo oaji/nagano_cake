@@ -32,7 +32,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:success] = "更新に成功しました"
-      redirect_to admin_items_path(@item)
+      redirect_to admin_item_path(@item)
     else
       flash.now[:danger]="更新に失敗しました"
       render "edit"

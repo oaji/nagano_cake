@@ -1,20 +1,15 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>NaganoCake</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -29,6 +24,13 @@
               </a>
             </div>
 
+            <nav>
+              <ul><% if customer_signed_in? %>
+                <p>ようこそ <%= link_to customers_path(customer.id) do %>
+          <%= customer.family_name %><%= customer.first_name %>
+        <% end %> さん。</p>
+        <% end %>
+
   <nav>
       <ul class="nav-list">
           <% if customer_signed_in? %>
@@ -39,26 +41,20 @@
                   <% else %>
                   <li class="nav-list-item"><%= link_to 'ログイン', customers_sign_in_path %></li>
                   <li class="nav-list-item"><%= link_to '会員登録', customers_sign_up_path %></li>
-                  <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %><br />
                   <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
                   <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
             <div class="collapse navbar-collapse" id="navbarEexample8">
               <ul class="nav navbar-nav">
 
-                <% if customer_signed_in? %>
-                  <li><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
-                <% else %>
-                  <li><%#= link_to 'ログイン', new_customer_session_path %></li>
-                  <li><%#= link_to '会員登録', new_customer_registration_path %></li>
                 <%end%>
           <% end %>
       </ul>
   </nav>
+
+
           </div>
         </nav>
       </div>
     </header>
   <%= yield %>
-
   </body>
-</html>
