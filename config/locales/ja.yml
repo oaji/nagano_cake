@@ -1,22 +1,18 @@
 ja:
-  customer:
-    customers:
-      family_name: "名字"
-      first_name: "名前"
-      family_name_kana: "ミョウジ"
-      first_name_kana: "ナマエ"
-      post_code: "郵便番号"
-      address: "住所"
-      telephone: "電話番号"
+  customers:
+    family_name: "名字"
+    first_name: "名前"
+    family_name_kana: "ミョウジ"
+    first_name_kana: "ナマエ"
+    post_code: "郵便番号"
+    address: "住所"
+    telephone: "電話番号"
 
   enums:
     orders:
       how_to_pay:
         card: "キャッシュカード"
         bank: "銀行振込"
-
-  enums:
-    orders:
       order_status:
         waiting: "入金待ち"
         confirmation: "入金確認"
