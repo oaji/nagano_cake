@@ -4,16 +4,12 @@
     <title>NaganoCake</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -27,7 +23,6 @@
                 Nagano Cake
               </a>
             </div>
-
 
             <nav>
               <ul><% if customer_signed_in? %>
@@ -55,10 +50,10 @@
       </ul>
   </nav>
 
+
           </div>
         </nav>
       </div>
     </header>
-    <%= yield %>
+  <%= yield %>
   </body>
-</html>

@@ -43,3 +43,4 @@
 #       t.string :send_to_address
 #       t.string :how_to_pay
 #       t.integer :deliver_fee
+
