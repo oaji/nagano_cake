@@ -1,6 +1,18 @@
 class Customers::OrdersController < ApplicationController
   before_action :setup_item, only: [:destroy]
 
+  def index
+    @orders = Order.all
+    @order = Order.new
+    @customer = current_customer
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    new_order.customer_id = current_customer.id
+    new_order.save
+  end
+
   def new
     @order = Order.new
   end
@@ -23,18 +35,6 @@ class Customers::OrdersController < ApplicationController
       @order = Order.new
       render 'new'
     end
-  end
-
-  def index
-    @orders = Order.all
-    @order = Order.new
-    @customer = current_customer
-  end
-
-  def show
-    @order = Order.find(params[:id])
-    new_order.customer_id = current_customer.id
-    new_order.save
   end
 
   def destroy
