@@ -7,6 +7,9 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :name
 
       t.timestamps
+
+      zip_code = 'xxxyyyy'
+      zip_code.insert(3, '-').split('-')
     end
   end
 end

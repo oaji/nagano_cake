@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	belongs_to :cart_items
     belongs_to :item
+    has_many :order_items
 
     validates :name, presence: true
     validates :addressee, presence: true

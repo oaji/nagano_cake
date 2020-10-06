@@ -27,8 +27,6 @@ Rails.application.routes.draw do
     get 'admins/top' => 'admins/top' #右側抜けてた
   end
 
-
-
   scope module: :customers do
 
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
