@@ -9,7 +9,7 @@ class Order < ApplicationRecord
     validates :how_to_pay, presence: true
 
     enum how_to_pay: {
-    	キャッシュカード: 0,
+    	クレジットカード: 0,
     	銀行振込: 1
     }
 

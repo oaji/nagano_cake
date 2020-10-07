@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
 	<br><br>
-	<h2>配送先登録/一覧</h2>
+	<h2 style="margin-top: 120px;">配送先登録/一覧</h2>
 	<p><%= flash[:notice] %></p>
 	<thead>
 		<table style="border:none" class="a">
@@ -46,7 +46,7 @@
 		</table>
 			<% @addresses.each do |address| %>
 			<% end %>
-			<%= paginate @addresses %>
+			<%#= paginate @addresses %>
 	</tbody>
 </div>
 </div>
