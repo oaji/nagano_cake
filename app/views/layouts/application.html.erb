@@ -1,56 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>NaganoCake</title>
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
-                <span class="sr-only"><%= link_to 'Home', root_path %></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">
-                Nagano Cake
-              </a>
-            </div>
-            <nav>
-              <ul><% if customer_signed_in? %>
+  <html>
+    <head>
+      <title>NaganoCake</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-                <p>ようこそ <%= link_to customers_path do %>
-                    <%= current_customer.family_name %><%= current_customer.first_name %>
-                    <% end %> さん。</p>
-                    <% end %>
-      <nav>
-        <ul class="nav-list">
-            <% if customer_signed_in? %>
-                    <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
-                    <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %></li>
-                    <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
-                    <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
-                    <% else %>
-                    <li class="nav-list-item"><%= link_to 'ログイン', customers_sign_in_path %></li>
-                    <li class="nav-list-item"><%= link_to '会員登録', customers_sign_up_path %></li>
-                    <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
-                    <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
-              <div class="collapse navbar-collapse" id="navbarEexample8">
-                <ul class="nav navbar-nav">
-            <% end %>
-        </ul>
-      </nav>
+<body>
+  <h1 style="margin-top: 60px;"><h1>
 
+      <header class="navbar navbar-fixed-top navbar-inverse">
+          <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8"></button>
+                    <a class="navbar-brand" href="/">Nagano Cake</a>
+                </div>
+              </div>
+            </nav>
           </div>
-        </nav>
-      </div>
-    </header>
-  <%= yield %>
+        <ul><% if customer_signed_in? %>
+          <p>ようこそ
+            <%= link_to customers_path do %>
+            <%= current.customer.family_name %><%= current.customer.first_name %>
+            <% end %>
+            <% end %>
+            さん。
+          </p>
+        </ul>
+
+       <nav>
+        <ul class="nav-list nav navbar-nav">
+          <% if customer_signed_in? %>
+            <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
+            <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %></li>
+            <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
+            <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
+          <% else %>
+            <li class="nav-list-item"><%= link_to 'ログイン', customers_sign_in_path %></li>
+            <li class="nav-list-item"><%= link_to '会員登録', customers_sign_up_path %></li>
+            <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
+            <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
+            <div class="collapse navbar-collapse" id="navbarEexample8"></div>
+          <%end%>
+        </ul>
+       </nav>
+      </header>
+   <%= yield %>
   </body>
+</html>
