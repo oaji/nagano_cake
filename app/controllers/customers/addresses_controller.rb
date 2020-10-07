@@ -1,9 +1,9 @@
 class Customers::AddressesController < ApplicationController
   def index
-  	@addresses = Address.all
+    @customer = current_customer
+    @addresses = current_customer.addresses
   	@address = Address.new
-  	@customer = current_customer
-    @addresses = Address.page(params[:page]).reverse_order
+    #@addresses = Address.page(params[:page]).reverse_order
   end
 
   def create
@@ -12,9 +12,9 @@ class Customers::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path, notice: "住所の登録が完了しました"
     else
-      @addresses = Address.all
-      @address = Address.new
-      render 'index'
+       @addresses = Address.all
+       @address = Address.new
+       render 'index'
     end
     #byebug
   end

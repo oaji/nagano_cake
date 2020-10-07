@@ -4,6 +4,7 @@ class Customers::OrdersController < ApplicationController
   def index
     @orders = Order.all
     @order = Order.new
+    @addresses = Address.all
     @customer = current_customer
   end
 
@@ -16,14 +17,11 @@ class Customers::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    @addresses = current_customer.addresses
   end
 
   def confirm
-    @order = Order.new(order_params)
-    if
-    render 'new'
-    end
+    @order = Order.new
+    @items = Item.all
   end
 
   def complete
@@ -61,4 +59,6 @@ class Customers::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit()
   end
+
 end
+
