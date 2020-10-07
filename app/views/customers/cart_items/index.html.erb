@@ -16,7 +16,7 @@
 				<% @sum = 0 %>
 			  		<% @cart_items.each do |cart_item| %>
 					  <tr>
-					  	<td><%= attachment_image_tag cart_item.item, :image, size: "60x60",  fallback: "no_image.jpg"%></td>
+					  	<td><%= attachment_image_tag cart_item.item, :image, size: "60x60",  fallback: "no_image.png"%></td>
 					  	<td><%= cart_item.item.name %></td>
 					  	<td><%= (cart_item.item.price*1.10).round %></td>
 						<% @sum += (cart_item.quantity*cart_item.item.price*1.10).round %>

@@ -23,35 +23,29 @@
                 Nagano Cake
               </a>
             </div>
-
             <nav>
               <ul><% if customer_signed_in? %>
-                <p>ようこそ <%= link_to customers_path(customer.id) do %>
-          <%= customer.family_name %><%= customer.first_name %>
-        <% end %> さん。</p>
-        <% end %>
-
-  <nav>
-      <ul class="nav-list">
-          <% if customer_signed_in? %>
-                  <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
-                  <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %>
-                  <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
-                  <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
-                  <% else %>
-                  <li class="nav-list-item"><%= link_to 'ログイン', customers_sign_in_path %></li>
-                  <li class="nav-list-item"><%= link_to '会員登録', customers_sign_up_path %></li>
-                  <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
-                  <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
-            <div class="collapse navbar-collapse" id="navbarEexample8">
-              <ul class="nav navbar-nav">
-
-                <%end%>
-          <% end %>
-      </ul>
-  </nav>
-
-
+                <p>ようこそ <%= link_to customers_path do %>
+                    <%= current_customer.family_name %><%= current_customer.first_name %>
+                    <% end %> さん。</p>
+                    <% end %>
+      <nav>
+        <ul class="nav-list">
+            <% if customer_signed_in? %>
+                    <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
+                    <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %></li>
+                    <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
+                    <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
+                    <% else %>
+                    <li class="nav-list-item"><%= link_to 'ログイン', customers_sign_in_path %></li>
+                    <li class="nav-list-item"><%= link_to '会員登録', customers_sign_up_path %></li>
+                    <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
+                    <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
+              <div class="collapse navbar-collapse" id="navbarEexample8">
+                <ul class="nav navbar-nav">
+            <% end %>
+        </ul>
+      </nav>
           </div>
         </nav>
       </div>

@@ -1,16 +1,18 @@
 <div class="container">
 <h1>注文情報入力</h1>
   <h2>支払方法</h2>
-  <%= form_with(model: @order, local: true) do |f| %>
+  <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
     <tr><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</tr>
     <tr><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</tr>
   <h2>お届け先</h2>
-    <tr><%= f.radio_button "ご自身の住所" %></tr>
+    <tr><%= f.radio_button :address, :ご自身の住所 %></tr>
     <tr><%= @customer.post_code %>
         <%= @customer.address %><br>
-        <%= @order.name %></tr>
-    <tr><%= f.radio_button "登録済住所から選択" %></tr>
-    <tr><%= f.text_field_tag "addressee" %></tr>
+        <%= @customer.family_name %>
+        <%= @customer.first_name %></tr>
+    <tr><%= f.radio_button :customer_address, :登録済住所から選択 %></tr>
+    <tr><%= f.collection_select(:customer_address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
+    </tr>
 
       <% if @order.errors.any? %>
         <h2><%= @order.errors.count %> 個のエラーがあります</h2>
@@ -22,16 +24,16 @@
       <% end %>
   <h2>新しいお届け先</h2>
     <tr>
-      <th>郵便番号(ハイフン無し)<%= f.text_field_tag "post_code" %></th>
+      <th>郵便番号(ハイフン無し)<%= f.text_field "post_code" %></th>
     </tr>
     <tr>
-      <th>住所<%= f.text_field_tag "addressee" %></th>
+      <th>住所<%= f.text_field "addressee" %></th>
     </tr>
     <tr>
-      <th>宛名<%= f.text_field_tag "name" %></th>
+      <th>宛名<%= f.text_field "name" %></th>
     </tr>
     <div class="actions">
-      <%= f.submit "確認画面へ進む", class: "btn-primary .text-center" %>
+      <%= f.submit "確認画面へ進む", class: "btn-primary " %>
     </div>
   <% end %>
   </div>
