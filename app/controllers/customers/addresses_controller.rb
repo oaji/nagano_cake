@@ -10,7 +10,7 @@ class Customers::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      redirect_to addresses_path(@address.id), notice: "住所の登録が完了しました"
+      redirect_to addresses_path, notice: "住所の登録が完了しました"
     else
       @addresses = Address.all
       @address = Address.new
@@ -27,7 +27,7 @@ class Customers::AddressesController < ApplicationController
   def update
   	@address = Address.find(params[:id])
   	@address.update(address_params)
-	  redirect_to addresses_path(@address), notice: "編集が完了しました"
+	  redirect_to addresses_path, notice: "編集が完了しました"
   end
 
   def destroy

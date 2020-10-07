@@ -15,12 +15,15 @@ class Customers::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @customer = current_customer
+    @addresses = current_customer.addresses
   end
 
   def confirm
     @order = Order.new(order_params)
     if
     render 'new'
+    end
   end
 
   def complete
@@ -42,6 +45,9 @@ class Customers::OrdersController < ApplicationController
     redirect_to current_cart
   end
 
+
+
+
   private
 
   def setup_item
@@ -55,5 +61,4 @@ class Customers::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit()
   end
-end
 end

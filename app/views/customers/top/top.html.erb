@@ -1,56 +1,15 @@
-<title>Nagano Cakey</title>
-<h1 style="margin-top: 60px;"><h1>
-
-	<header>
-
-	</header>
-
-
-
-<body>
-	<img src="/assets/no_image.png" alt="">
-<div class="container">
-	<div class="row">
-		<div class="col-xs-2">
-
-		    <h2>商品検索</h2>
+<img src="/assets/no_image.png" alt="">
+  <div class="container">
+  	<div class="row">
+  		<div class="col-xs-2">
+          <h2>商品検索</h2>
 
 
 
-		<div class="item-search">
-  <%= form_with(scope: :search, url: items_path, method: :get, local: true) do |f| %>
-    <div class="field">
-      <%= f.label :ジャンル %>
-      <%= f.text_field :item, value: @search_params %>
-      <% end %>
-    </div>
-  		</div>
-
-
-
-
-  			<% if customer_signed_in? %>
-          <p>ようこそ <%= link_to customers_path do %>
-					   <%= customer.family_name %><%= customer.first_name %>
-				    <% end %> さん。</p>
+      <div class="item-search">
+        <%= form_with(scope: :search, url: items_path, method: :get, local: true) do |f| %>
+          <%= f.label :ジャンル %>
+          <%= f.text_field :item, value: @search_params %>
         <% end %>
-          </div>
       </div>
- </div>
-
-
-
-
-
-<h2>おすすめ商品</h2>
-<thead>
-</thead>
-<tr>
-	<td>
-
-	</td>
-</tr>
-</body>
-
-
 
