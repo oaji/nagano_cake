@@ -43,6 +43,9 @@ class Customers::OrdersController < ApplicationController
     redirect_to current_cart
   end
 
+
+
+
   private
 
   def setup_item
@@ -56,4 +59,6 @@ class Customers::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit()
   end
+
 end
+

@@ -11,7 +11,7 @@ ja:
   enums:
     orders:
       how_to_pay:
-        card: "キャッシュカード"
+        card: "クレジットカード"
         bank: "銀行振込"
       order_status:
         waiting: "入金待ち"
