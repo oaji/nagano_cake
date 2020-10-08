@@ -9,7 +9,7 @@
     </head>
 
 <body>
-  <h1 style="margin-top: 60px;"><h1>
+  <h1 style="margin-top: 60px;"></h1>
 
       <header class="navbar navbar-fixed-top navbar-inverse">
           <div class="container">
@@ -33,6 +33,7 @@
         </ul>
 
        <nav>
+        <br><br>
         <ul class="nav-list nav navbar-nav">
           <% if customer_signed_in? %>
             <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>

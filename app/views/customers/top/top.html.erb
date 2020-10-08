@@ -1,7 +1,7 @@
 <h1 style="margin-top: 60px;"><h1>
 
 <% if customer_signed_in? %>
-	<% if current_customer == @customer || current_customer.admin? %>
+	<% if current_customer == @customer %> #|| current_customer.admin? %>
 	<%= link_to "管理画面", admin_admins_top_path(@customer.id) %>
 	<% end %>
 <% end %>
