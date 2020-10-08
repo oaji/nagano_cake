@@ -1,17 +1,18 @@
-<div class="container">
-	<h2 style="margin-top: 60px;">退会ページ</h2>
-
-	<h4><strong>本当に退会しますか？</strong></h4>
-	<p>退会すると会員登録情報や<br>
-		これまでの購入履歴が閲覧できなくなります。<br>
-	退会する場合は退会するをクリックしてください</p>
-
-
-		<!--退会しないボタン-->
-		<%= link_to '退会しない',customers_path , method: :get, class: "btn btn-primary" %>
-		<!--退会するボタン-->
-		<%= link_to "退会する", customers_complete_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<div class="row center-block message">
+			<div class="text-center">
+				<h3 style="margin-top: 120px;"><strong>本当に退会しますか？</strong></h3>
+				<p>退会すると会員登録情報や<br>
+					これまでの購入履歴が閲覧できなくなります。<br>
+				退会する場合は退会するをクリックしてください。</p>
 
 
+					<!--退会しないボタン-->
+				<%= link_to '退会しない',customers_path , method: :get,class: 'btn btn-default btn-md',:style=>"background-color:#003399; color:#fff;" %>
+					<!--退会するボタン-->
+				<%= link_to "退会する", customers_complete_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: 'btn btn-default btn-md',:style=>"background-color:#993300; color:#fff;" %>
+			</div>
+		</div>
+	</div>
 </div>
-
