@@ -8,14 +8,12 @@
 		</tr>
 	</thead>
 	<body>
-		<% @order_items.each do |order| %>
+		<% @orders.each do |order| %>
 			<tr>
-				<td><%= order.created_at %>
-				<%= link_to admin_order_path(order) %></td>
-				<% @customer = %>
-				<td><%= order.family_name %>
-					<%= order.first_name %></td>
-				</td>
+				<td><%= order.created_at %></td>
+				<%#= link_to admin_order_path(order) %></td>
+				<%# @customer = %>
+				<td><%= order.name %></td>
 				<td><%= order.quantity %></td>
 				<td><%= order.order_status %></td>
 			</tr>
