@@ -1,3 +1,53 @@
 // Place all the styles related to the customers::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.jumbotron {
+	background-image: url("../background_image.jpg");
+	height: 1500px;
+	background-size: cover;
+}
+
+.mytable {
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+}
+
+
+.field {
+	color: #000;
+}
+
+
+.blank::before{
+	content: "____";
+}
+
+.blank1::before{
+	content: "__";
+}
+
+
+.message{
+	margin-top:100px;
+	height:600px;
+	width:100%;
+	text-aline:center;
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.greeting{
+	margin-top:130px;
+	height:300px;
+	width:100%;
+	text-aline:center;
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.actions{
+	margin-left:350px;
+}
+

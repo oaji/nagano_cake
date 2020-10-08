@@ -2,7 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.col-xs-6:nth-child(2){
+.cart_background {
+background-image: url("../cartitems_background.jpeg");
+background-size:auto;
+background-position:bottom;
+height: 1200px;
+}
 
-	float:right;
+.mytable {
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.table_title th{
+	padding: 10px 5px;
+	width: auto;
+	height:30px;
+	background-color: rgba(255,255,255,0.3);
+}
+strong{
+	color:#fff;
 }

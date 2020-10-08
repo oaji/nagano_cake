@@ -1,21 +1,29 @@
-<div class="container">
-<div class="row">
-	<h1 style="margin-top: 120px;">配送先編集</h1>
-	<%= form_for(@address) do |f| %>
-		<table>
-			<tr>
-				<th>郵便番号(ハイフンなし)</th><th> <%= f.text_field :post_code %></th>
-			</tr>
-			<tr>
-				<th>住所 </th><th><%= f.text_field :customer_address %></th>
-			</tr>
-			<tr>
-				<th>宛名 </th><th><%= f.text_field :name %></th>
-			</tr>
-			<tr>
-				<td><%= f.submit :編集する , class: "btn-primary btn-lg" %></td>
-			</tr>
-		</table>
-	<% end %>
-</div>
+<div class="main-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 style="margin-top: 120px; margin-bottom: 20px; color: #fff;"><strong>配送先編集</strong></h1>
+				<%= form_for(@address) do |f| %>
+					<table class=" table mytable">
+						<tr>
+							<th>郵便番号(ハイフンなし)</th>
+							<th style="color: #000;"> <%= f.text_field :post_code ,:size=>"21" %></th>
+						</tr>
+						<tr>
+							<th>住所 </th>
+							<th style="color: #000;"><%= f.text_area :customer_address %></th>
+						</tr>
+						<tr>
+							<th>宛名 </th>
+							<th style="color: #000;"><%= f.text_field :name ,:size=>"21"%></th>
+						</tr>
+						<tr>
+							<th></th>
+							<th><%= f.submit :編集する , class: "btn-default btn-sm",:style=>"background-color:black; color:#fff;" %></th>
+						</tr>
+					</table>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

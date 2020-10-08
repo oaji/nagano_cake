@@ -15,7 +15,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+/*@import "protospace";*/
 .pagination>li>a {
   border: none;
   color: #696969;
@@ -31,3 +31,4 @@
 .pagination>li>a:hover {
   border-radius: 15px;
 }
+

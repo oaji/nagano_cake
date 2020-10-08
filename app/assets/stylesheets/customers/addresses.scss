@@ -16,7 +16,7 @@ table.b{
 .b th{
 	padding: 10px 5px;
 	width: auto;
-	background-color: #DDDDDD;
+	background-color: rgba(255,255,255,0.3);
 }
 
 .b td{
@@ -40,4 +40,25 @@ table.b{
 
 .pagination>li>a:hover {
   border-radius: 15px;
+}
+
+.main-container {
+background-image: url("../address_background.jpg");
+background-size:cover;
+height: 1200px;
+}
+
+th{
+	color: #fff;
+}
+
+.mytable {
+	height:300px;
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.addinfo{
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
 }

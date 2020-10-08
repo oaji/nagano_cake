@@ -1,54 +1,54 @@
-<div class="container">
-	<h1 style="margin-top: 90px;">マイページ</h1>
-		<h3>登録情報</h3>
-		<!-- 登録情報変更へのリンクボタン↓(リンク) -->
-		<%= link_to '編集する',edit_customers_path, class: 'btn btn-primary' %>
-		<!-- パスワード変更ボタン(リンク) -->
-		<%#= link_to 'パスワードを変更する', edit_customer_password_path, class: 'btn btn-primary' %>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h2 class="text-muted" style="margin-top: 100px; color: #fff;"><strong>My page</strong></h2>
+			<h3 style="color: #fff;"><strong>ご登録情報</strong></h3>
+			<%= link_to edit_customers_path, method: :get do%>
+			<div class="btn">
+				<span class="glyphicon glyphicon-wrench" aria-hidden="true" style="color: #fff;"> 編集する</span>
+　　			</div>
+			<% end %>
+			<table class="table table-bordered mytable" style="margin-top: 10px;">
+				<tbody>
+					<tr>
+						<th>名前</th>
+						<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
+					</tr>
+					<tr>
+						<th>カナ</th>
+						<td><%= @customer.family_name %><%= @customer.first_name %></td>
+					</tr>
 
-		<!--顧客情報-->
-		<table class="table table-bordered">
-			<tbody class="table table-bordered">
-				<tr>
-					<th>名前</th>
-					<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
-				</tr>
-				<tr>
-					<th>カナ</th>
-					<td><%= @customer.family_name %><%= @customer.first_name %></td>
-				</tr>
+					<tr>
+						<th>郵便番号</th>
+						<td><%= @customer.post_code %></td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td><%= @customer.address %></td>
+					</tr>
+					<tr>
+						<th>電話番号</th>
+						<td><%= @customer.telephone %></td>
+					</tr>
+					<tr>
+						<th>名前</th>
+						<td><%= @customer.email %></td>
+					</tr>
+				</tbody>
 
-				<tr>
-					<th>郵便番号</th>
-					<td><%= @customer.post_code %></td>
-				</tr>
-				<tr>
-					<th>住所</th>
-					<td><%= @customer.address %></td>
-				</tr>
-				<tr>
-					<th>電話番号</th>
-					<td><%= @customer.telephone %></td>
-				</tr>
-				<tr>
-					<th>名前</th>
-					<td><%= @customer.email %></td>
-				</tr>
-			</tbody>
+			</table>
 
-		</table>
+			<table style="color: #fff;">
 
-		<table>
-				<!-- 配送先一覧へのリンクボタン↓(リンク) -->
-				<tr>
-					<th>配送先</th>
-					<td><%= link_to '一覧を見る',addresses_path, class: 'btn btn-primary'  %></td>
-				</tr>
-				<!-- 注文履歴一覧へのリンクボタン↓(リンク) -->
-				<tr>
-					<th>注文履歴</th>
-					<td><%= link_to '一覧を見る',orders_path, class: 'btn btn-primary' %></td>
-				</tr>
-		</table>
+					<tr>
+						<th><h4><strong>配送先</strong></h4></th>
+						<td><%= link_to '一覧を見る',addresses_path, class: 'btn btn-default btn-md',:style=>"background-color:black; color:#fff;" %></td>
+					</tr>
+					<tr>
+						<th><h4><strong>注文履歴</strong></h4></th>
+						<td><%= link_to '一覧を見る',orders_path, class: 'btn btn-default btn-md',:style=>"background-color:black; color:#fff;" %></td>
+					</tr>
+			</table>
 
+	</div>
 </div>
