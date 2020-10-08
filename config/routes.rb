@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :admins, skip: :all #これに上のdevise_forを消して、書き換える
   devise_scope :admin do
-  get '/admins/sign_in' => 'admins/registrations#new'
-  post '/admins/sign_in' => 'admins/registrations#create'
-  get '//admins/sign_out' => 'admins/sessions#destroy'
+  get '/admins/sign_in' => 'admins/sessions#new'
+  post '/admins/sign_in' => 'admins/sessions#create'
+  delete '/admins/sign_out' => 'admins/sessions#destroy'
   end
 
   devise_for :customers, skip: :all #下部に定義しているルーティング以外消す技
