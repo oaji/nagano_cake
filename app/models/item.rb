@@ -18,6 +18,7 @@ class Item < ApplicationRecord
     validates :price, numericality: true
   end
 
+
 	# # is_stoppedカラムがfalseであるものを取得する
 	# scope :active, -> {where(is_stopped: false)}
 
