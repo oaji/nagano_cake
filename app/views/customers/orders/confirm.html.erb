@@ -1,38 +1,42 @@
 <div class="container">
-	<br><br><br><br><br>
-	<h1>注文情報確認</h1>
-		<thead>
-			<table class="z" border="1">
-					<tr>
-						<th>商品名</th><th>単価(税込)</th>
-						<th>数量</th><th>小計</th>
-					</tr>
-					<% @sum = 0 %>
-					<%= current_customer.cart_items.each do |cart_item| %>
-						<tr>
-							<td><%= attachment_image_tag cart_item.item, :image, size: "100x50",  fallback: "no_image.png" %>
-								<%= cart_item.item.name %></td>
-							<td><%= cart_item.item.price %></td>
-							<td><%= cart_item.quantity %></td>
-							<td><%= (cart_item.item.price*cart_item.quantity*1.10).round %></td>
-								<% @sum += (cart_item.quantity*cart_item.item.price*1.10).round %>
-						</tr>
-					<% end %>
-			</table>
-		</thead>
+<br><br><br><br><br>
+<h1>注文情報確認</h1>
+	<thead>
+		<table class="z" border="1">
+			<tr>
+				<th>商品名</th><th>単価(税込)</th>
+				<th>数量</th><th>小計</th>
+			</tr>
+			<% @sum = 0 %>
+			<%= current_customer.cart_items.each do |cart_item| %>
+				<tr>
+					<td><%= attachment_image_tag cart_item.item, :image, size: "100x50",  fallback: "no_image.png" %>
+						<%= cart_item.item.name %></td>
+					<td><%= cart_item.item.price %></td>
+					<td><%= cart_item.quantity %></td>
+					<td><%= (cart_item.item.price*cart_item.quantity*1.10).round %></td>
+					<% @sum += (cart_item.quantity*cart_item.item.price*1.10).round %>
+				</tr>
+			<% end %>
+		</table>
+	</thead>
 		<table class="y" border="1">
 			<tr>
-				<th>送料</th><td><%= @order.deliver_fee %></td>
+				<th>送料</th><td><%= @deliver_fee %></td>
 			</tr>
 			<tr>
 				<th>商品合計</th><td><%= @sum %></td>
 			</tr>
 			<tr>
-				<th>請求金額</th><td><%= @sum + 800 %></td>
+				<th>請求金額</th><td><%= @sum + @deliver_fee %></td>
 			</tr>
 		</table>
-
-	<tr>支払方法 <%= @order.how_to_pay %></tr>
-	<tr>お届け先 <%= @order.addressee %></tr>
-	<%#= f.submit '購入を確定する',class: "btn-success text-center " %>
+	<table>
+		<tr><th>支払方法 </th><td><%= session[:order][:how_to_pay] %></td></tr>
+		<tr><th>お届け先 </th><td><%= session[:order][:post_code]+session[:order][:address] %></td></tr>
+		<tr><th></th><td><%= session[:order][:name] %></td></tr>
+	</table>
+	<%= form_for (@order) do |f| %>
+		<%= f.submit '購入を確定する',class: "btn-success btn-sm" %>
+	<% end %>
 </div>
