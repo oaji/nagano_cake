@@ -25,6 +25,8 @@
  	)
 
  Admin.create!(email: "admin1@example.com", password: "123456")
+
+
 # Order.create!(
 #  	post_code:'000-0000'
 #     customer_address:'00-00'

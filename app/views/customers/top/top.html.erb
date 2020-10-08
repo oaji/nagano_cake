@@ -1,10 +1,10 @@
 <h1 style="margin-top: 60px;"><h1>
 
-<% if customer_signed_in? %>
-	<% if current_customer == @customer %> #|| current_customer.admin? %>
-	<%= link_to "管理画面", admin_admins_top_path(@customer.id) %>
-	<% end %>
-<% end %>
+<%# if customer_signed_in? %>
+	<%# if current_customer == @customer || current_customer.admin? %>
+	<%#= link_to "管理画面", admin_admins_top_path(@customer.id) %>
+	<%# end %>
+<%# end %>
 
 	<img src="/assets/no_image.png" alt="">
 	 	<div class="container">
@@ -30,10 +30,20 @@
 		</div>
 
 	<h2>おすすめ商品</h2>
+
 	<thead>
+	  <tr>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+	  </tr>
 	</thead>
-	<tr>
-		<td>
-		</td>
-	</tr>
-	</body>
+	<tbody>
+		<tr>
+			<td>
+			</td>
+		</tr>
+	</tbody>
+
+
