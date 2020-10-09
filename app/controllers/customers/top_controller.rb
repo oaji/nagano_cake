@@ -17,6 +17,7 @@ class Customers::TopController < ApplicationController
 
 	end
 
+
 	def about
 	end
 
