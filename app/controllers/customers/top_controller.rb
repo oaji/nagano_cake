@@ -2,6 +2,7 @@ class Customers::TopController < ApplicationController
 	def top
 	end
 
+
 	def about
 	end
 
