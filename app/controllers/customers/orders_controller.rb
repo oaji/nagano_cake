@@ -49,6 +49,8 @@ class Customers::OrdersController < ApplicationController
   end
 
   def complete
+    @cart_item = CartItem.all
+    @cart_item.destroy_all
   end
 
   def create
@@ -57,6 +59,7 @@ class Customers::OrdersController < ApplicationController
     @deliver_fee = 800
     @order = Order.new
     redirect_to  orders_complete_path
+
   end
 
   def destroy
