@@ -1,21 +1,21 @@
+<%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
 <div class="container new_background_image" style=" width: 100%; margin-top: 70px;">
-
   <h2><strong>注文情報入力</strong></h2>
+    <div class="font">
     <h3>支払方法</h3>
-      <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
         <%= f.hidden_field :how_to_pay, value: 'how_to_pay' %>
-        <p><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</p>
-        <p><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</p>
-      <h2>お届け先</h2>
-        <p><%= radio_button_tag :any, 1 %>ご自身の住所</p>
-        <td><%= @customer.post_code %>
-            <%= @customer.address %><td><br>
+          <p><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</p>
+          <p><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</p>
+        <h2>お届け先</h2>
+          <p><%= radio_button_tag :any, 1 %>ご自身の住所</p>
+          <td><%= @customer.post_code %>
+            <%= @customer.address %></td><br>
             <%= @customer.family_name %>
             <%= @customer.first_name %></tr>
-        <p><tr><%= radio_button_tag :any, 2 %>登録済住所から選択</tr></p>
-        <tr>
-          <%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
-        </tr>
+          <p><tr><%= radio_button_tag :any, 2 %>登録済住所から選択</tr></p>
+          <tr>
+            <%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
+          </tr>
 
           <% if @order.errors.any? %>
             <h2><%= @order.errors.count %> 個のエラーがあります</h2>
@@ -37,11 +37,11 @@
               <th>宛名</th><th><%= f.text_field :name, class: "name" %></th>
             </tr>
         </table>
+      </div>
         <div class="actions">
           <%= f.submit "確認画面へ進む", class: "btn-primary btn-sm" %>
         </div>
-      <% end %>
-
+    </div>
 </div>
-</div>
+<% end %>
 
