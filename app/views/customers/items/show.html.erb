@@ -1,14 +1,13 @@
 <div class="items_background">
 	<div class="container">
-	   <div class="row" style="margin-top:150px">
+	   	<div class="row" style="margin-top:150px">
 
-		 <!-- ジャンル検索（パーシャル） -->
-		  <%= render "genre_search", genres: @genres %>
+		  	<%= render "genre_search", genres: @genres %>
 
 			<div class="col-xs-5 item-content">
-
 				<%= attachment_image_tag @item, :image,style: "width:100%; "%>
 			</div>
+
 			<div class="col-xs-5 item-content">
 
 				<table class="table">
@@ -17,20 +16,23 @@
 
 					<p style="color: #fff;"><%= @item.introduction%></p>
 
-					<!-- application_helper (税込価格	) -->
 					<h4 style="color: #fff;"><%= (@item.price*1.10).round %>
+
 						<span>円(税込価格)</span>
+
 					</h4>
 
-					<!-- #選択型のプルダウンメニュー -->
 					<%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
+
 						<%= f.hidden_field :item_id %>
+
 						<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+
 						<div style="margin-top: 10px;">
 	            			<%= f.submit "カートに入れる", class: "btn btn-default btn-md",:style=>"background-color:#666; color:#fff;"%>
 	            		</div>
-					<% end %>
 
+					<% end %>
 				</table>
 			</div>
 		</div>
