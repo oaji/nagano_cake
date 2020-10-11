@@ -28,7 +28,7 @@ class Customers::OrdersController < ApplicationController
        session[:order][:address] = current_customer.address
        session[:order][:name] = current_customer.family_name + current_customer.first_name
     elsif params[:any].to_i == 2
-      address = Address.find(params[:order][:address])
+       address = Address.find(params[:order][:address])
        session[:order][:post_code] = address.post_code
        session[:order][:address] = address.customer_address
        session[:order][:name] = address.name
@@ -42,10 +42,9 @@ class Customers::OrdersController < ApplicationController
     end
     session[:order][:customer_id] = current_customer.id
     session[:order][:how_to_pay] = order_params[:how_to_pay]
-    @order = session[:order]
-    @a = params[:order][:how_to_pay]
-    @b = params[:order][:customer_address]
+    session[:order][:deliver_fee] = 800
     @deliver_fee = 800
+    @order = session[:order]
   end
 
   def complete
@@ -54,12 +53,18 @@ class Customers::OrdersController < ApplicationController
   end
 
   def create
-    @order = session[:order]
+    @order = Order.new(session[:order])
+    @order.total_payment = params[:order][:total_payment]
     @items = Item.all
-    @deliver_fee = 800
-    @order = Order.new
-    redirect_to  orders_complete_path
-
+    @order.save!
+    order_item = []
+      @order_items = current_customer.cart_items
+        #byebug
+        @order_items.each do |i|
+          order_item << @order.order_items.build(item_id: i.item_id, quantity: i.quantity, order_status: 1, price: i.item.price)
+        end
+      OrderItem.import order_item
+    redirect_to orders_complete_path
   end
 
   def destroy
@@ -78,6 +83,6 @@ class Customers::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :how_to_pay, :any)
+    params.require(:order).permit(:post_code, :address, :name, :how_to_pay, :any, order_items_attributes: [:quantity])
   end
 end

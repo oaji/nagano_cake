@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
 
 	protected
+
     def after_sign_in_path_for(resource)
       case resource
       when Admin
@@ -19,6 +20,7 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
+
   end
 
 

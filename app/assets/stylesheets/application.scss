@@ -15,6 +15,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 .pagination>li>a {
   border: none;
   color: #696969;
@@ -31,3 +32,24 @@
   border-radius: 15px;
 }
 
+a:hover{
+　text-decoration: none;
+}
+
+/*ブランドロゴのデザイン*/
+.navbar-brand {
+font-family: 'Sacramento', cursive;
+font-size: 200%;
+padding-top: 30px;
+padding-right: 100px;
+}
+
+.navbar-list-item {
+	possition: top;
+	font-color: #fff;
+	padding: auto;
+}
+
+.no-underline {
+	text-decoration:none !important;
+	}
