@@ -13,12 +13,13 @@
 		<tbody style="color: #000;">
 			<tr>
 				<td><%= link_to admin_order_path(order.id) do %>
-						<%= l order.created_at %>
+						<%= l order.created_at, format: :long %>
 					<% end %>
 				</td>
 				<td><%= order.name %></td>
-				<td><%= order.quantity %></td>
-				<td><%= select :order, :order_status, Order.order_status.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %></td>
+				<td><%= order.order_items.sum(:quantity) %></td>
+				<td><%= order.order_status %>
+					<%#= select :order, :order_status, Order.order_statuses.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %></td>
 			</tr>
 		<% end %>
 	</tbody>
