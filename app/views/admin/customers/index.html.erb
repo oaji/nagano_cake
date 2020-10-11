@@ -1,43 +1,42 @@
-<h1 style="margin-top: 60px;">会員一覧</h1>
+<div class="container">
+	<h1 style="margin-top: 120px;">会員一覧</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>会員ID</th>
+					<th>氏名</th>
+					<th>メールアドレス</th>
+					<th>ステータス</th>
+				</tr>
+			</thead>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>会員ID</th>
-			<th>氏名</th>
-			<th>メールアドレス</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
+			<tbody>
+				<% @customers.each do |customer| %>
+				<tr>
+					<td>
+						<%= customer.id %>
+					</td>
 
-	<tbody>
-		<% @customers.each do |customer| %><!--ブロック変数を二つ入れる？-->
-		<tr>
-			<td>
-				<%= customer.id %>
-			</td>
+					<td>
+						<%= link_to admin_customer_path(customer.id) do %>
+							<%= customer.family_name %><%= customer.first_name %>
+						<% end %>
+					</td>
 
-			<td>
-				<%= link_to admin_customer_path(customer.id) do %>
-					<%= customer.family_name %><%= customer.first_name %>
+					<td>
+						<%= customer.email %>
+					</td>
+
+					<td>
+						<% if customer.is_active == true %>
+				 			<h5>有効</h5>
+				 		<% else %>
+				 			<h5>無効</h5>
+				 		<% end %>
+				 	</td>
+				</tr>
 				<% end %>
-			</td>
-
-			<td>
-				<%= customer.email %>
-			</td>
-
-			<td>
-				<% if customer.is_active == true %> <!--''で囲うと文字列になってしまうので値だけ記述-->
-		 			<h5>有効</h5>
-		 		<% else %>
-		 			<h5>無効</h5>
-		 		<% end %>
-		 	</td>
-
-
-		</tr>
-		<% end %>
-		<%= paginate @customers %>
-	</tbody>
-</table>
+				<%= paginate @customers %>
+			</tbody>
+		</table>
+</div>

@@ -19,3 +19,8 @@ ja:
         production: "制作中"
         preparation: "準備中"
         done: "発送済み"
+
+  orders:
+    formats:
+      default:
+        create_at: "%Y/%m/%d %H:%M:%S"
