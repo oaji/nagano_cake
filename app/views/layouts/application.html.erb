@@ -16,9 +16,10 @@
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8"></button>
                   <% if admin_signed_in? %>
-                    <div class="navbar-brand"><%= link_to admin_admins_top_path do %>Nagano Cake<% end %></div>
+                    <div class="navbar-brand"><%= link_to admin_admins_top_path do %>
+                      <div style="color: #ffffff;">Nagano Cake</div><% end %></div>
                     <% else %>
-                    <div class="navbar-brand"><%= link_to root_path do %>Nagano Cake<% end %></div>
+                    <div class="navbar-brand"><%= link_to root_path do %><div style="color: #ffffff;">Nagano Cake</div><% end %></div>
                     <% end %>
                 </div>
             </nav>
@@ -28,11 +29,12 @@
         <ul class="nav-list nav navbar-nav navbar-right">
 
           <% if customer_signed_in? %>
-            <li class="nav-list-item"><p>ようこそ
+            <li class="nav-list-item">
+              <div style="margin-top: 15px; color: #ffffff;"><p>ようこそ
               <%= link_to customers_path do %>
               <%= current_customer.family_name %><%= current_customer.first_name %>
               <% end %>
-              さん。</p>
+              さん。</p></div>
             </li>
             <li class="nav-list-item"><%= link_to 'マイページ', customers_path %></li>
             <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
