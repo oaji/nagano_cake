@@ -1,60 +1,56 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 style="margin-top: 120px;"><%= @customer.family_name %><%= @customer.first_name%>さんの会員詳細</h1>
+				<table class="table info_table" style="width: 500px; margin-top:20px;">
+					<tr>
+					<th class="list_name">顧客ID</th>
+					<td><%= @customer.id %></td>
+						<td>
+							<%if @customer.is_active == true %>
+								<h5>有効</h5>
+							<% else %>
+								<h5>無効</h5>
+							<% end %>
+						</td>
+					</tr>
 
-<h1 style="margin-top: 80px;"><%= @customer.family_name %><%= @customer.first_name%>さんの会員詳細</h1>
+					<tr>
+					<th class="list_name">氏名</th>
+					<td><%= @customer.family_name %><%= @customer.first_name %></td>
+					</tr>
 
+					<tr>
+					<th class="list_name">フリガナ</th>
+					<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
+					</tr>
 
-<table>
+					<tr>
+					<th class="list_name">郵便番号</th>
+					<td><%= @customer.post_code %></td>
+					</tr>
 
-	<tr>
-	<th>顧客ID</th>
-	<td><%= @customer.id %></td>
-		<td>
-			<%if @customer.is_active == true %>
-				<h5>有効</h5>
-			<% else %>
-				<h5>無効</h5>
-			<% end %>
-		</td>
-	</tr>
+					<tr>
+					<th class="list_name">住所</th>
+					<td><%= @customer.address %></td>
+					</tr>
 
-	<tr>
-	<th>氏名</th>
-	<td><%= @customer.family_name %><%= @customer.first_name %></td>
-	</tr>
+					<tr>
+					<th class="list_name">電話番号</th>
+					<td><%= @customer.telephone %></td>
+					</tr>
 
-	<tr>
-	<th>フリガナ</th>
-	<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
-	</tr>
+					<tr>
+					<th class="list_name">メールアドレス</th>
+					<td><%= @customer.email %></td>
+					</tr>
+				</table>
 
-	<tr>
-	<th>郵便番号</th>
-	<td><%= @customer.post_code %></td>
-	</tr>
-
-	<tr>
-	<th>住所</th>
-	<td><%= @customer.address %></td>
-	</tr>
-
-	<tr>
-	<th>電話番号</th>
-	<td><%= @customer.telephone %></td>
-	</tr>
-
-	<tr>
-	<th>メールアドレス</th>
-	<td><%= @customer.email %></td>
-	</tr>
-
-	<tr>
-		<td>
-			<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary', data: {"turbolinks"=>false} %>
-		</td>
-
-		<td>
-			<%= link_to '注文履歴一覧', admin_orders_path,class: 'btn btn-primary' %>
-		</td>
-	</tr>
-
-</table>
+				<div style ="margin: 10px;">
+					<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary', data: {"turbolinks"=>false} %>
+					<%= link_to '注文履歴一覧', admin_orders_path,class: 'btn btn-primary' %>
+				</div>
+		</div>
+	</div>
+</div>
 
