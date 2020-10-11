@@ -20,7 +20,7 @@ ja:
         preparation: "準備中"
         done: "発送済み"
 
-  orders:
-    formats:
-      default:
-        create_at: "%Y/%m/%d %H:%M:%S"
+      create_at:
+        formats:
+          default:
+            "%Y/%m/%d %H:%M:%S"
