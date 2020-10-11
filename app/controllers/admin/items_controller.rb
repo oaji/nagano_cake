@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
 
-  # before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
   def index
     @items = Item.all.page(params[:page]).reverse_order
@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_items_path(@item), success:"商品登録に成功しました"
+      redirect_to admin_item_path(@item), success:"商品登録に成功しました"
     else
       flash.now[:danger]="商品登録に失敗しました"
       render 'new'
