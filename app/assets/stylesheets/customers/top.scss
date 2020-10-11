@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.jumbotron {
-  background-image: url("../background_image.jpg");
-  height: 1200px;
-  background-size: cover;
+
+.top_background {
+	background-image: url("../top_background2.jpg");
+	background-size: 1600px;
+	background-position: bottom;
+	width: 1600px;
+	height: 1600px;
 }
