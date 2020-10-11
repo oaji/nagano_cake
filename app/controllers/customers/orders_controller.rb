@@ -56,16 +56,14 @@ class Customers::OrdersController < ApplicationController
     @order = Order.new(session[:order])
     @order.total_payment = params[:order][:total_payment]
     @items = Item.all
-    # @order.save
-    # @order.each do |t|
-    #    t.created_at
-    #    t.name
-    #    t.quantity
-    #    order_item.save
-    #  end
-    #byebug
-    @order_item = @order
-    @order_item.save
+    @order.save!
+    order_item = []
+      @order_items = current_customer.cart_items
+        #byebug
+        @order_items.each do |i|
+          order_item << @order.order_items.build(item_id: i.item_id, quantity: i.quantity, order_status: 1, price: i.item.price)
+        end
+      OrderItem.import order_item
     redirect_to orders_complete_path
   end
 
@@ -85,6 +83,6 @@ class Customers::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :how_to_pay, :any)
+    params.require(:order).permit(:post_code, :address, :name, :how_to_pay, :any, order_items_attributes: [:quantity])
   end
 end

@@ -1,56 +1,46 @@
-<div class="container new_background_image" style=" width: 100%;">
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6">
-      <h2 style="margin-top: 120px;"><strong>注文情報入力</strong></h2>
-        <div data-turbolinks="false" class="how_to_pay" >
-          <h3><strong>支払方法 </strong></h3>
-          <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
-          <%= f.hidden_field :how_to_pay, value: 'how_to_pay' %>
-          <span><%= f.radio_button :how_to_pay, :クレジットカード %> クレジットカード</span><br>
-          <span><%= f.radio_button :how_to_pay, :銀行振込 %> 銀行振込</span>
-        </div>
-        <div>
-          <h3><strong>お届け先 </strong></h3>
-              <strong><%= radio_button_tag :any, 1 %> ご自身の住所</strong><br>
-              <div style="color: #fff;">
-                <%= @customer.post_code %>
-                <%= @customer.address %>
-                <%= @customer.family_name %>
-                <%= @customer.first_name %>
-              </div>
-              <br>
-              <strong style="padding-right: 5px;"><%= radio_button_tag :any, 2 %> 登録済住所から選択</strong>
-              <%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
-                <% if @order.errors.any? %>
-                  <h2><%= @order.errors.count %> 個のエラーがあります</h2>
-                  <ul>
-                    <% @order.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                    <% end %>
-                  </ul>
-                <% end %>
+<%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+<div class="container new_background_image" style=" width: 100%; margin-top: 70px;">
+  <h2><strong>注文情報入力</strong></h2>
+    <div class="font">
+    <h3>支払方法</h3>
+        <%= f.hidden_field :how_to_pay, value: 'how_to_pay' %>
+          <p><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</p>
+          <p><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</p>
+        <h2>お届け先</h2>
+          <p><%= radio_button_tag :any, 1 %>ご自身の住所</p>
+          <td><%= @customer.post_code %>
+            <%= @customer.address %></td><br>
+            <%= @customer.family_name %>
+            <%= @customer.first_name %></tr>
+          <p><tr><%= radio_button_tag :any, 2 %>登録済住所から選択</tr></p>
+          <tr>
+            <%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
+          </tr>
 
-              <table>
-              <br>
-                <strong><%= radio_button_tag :any, 3 %> 新しいお届け先</strong>
-                  <tr>
-                    <th>郵便番号(ハイフン無し) </th>
-                    <th style="padding: 5px; color: #000;"><%= f.text_field :post_code, class: "post_code",:size=>"21" %></th>
-                  </tr>
-                  <tr>
-                    <th>住所</th><th style="padding: 5px; color: #000;"><%= f.text_area :customer_address, class: "customer_address" %></th>
-                  </tr>
-                  <tr>
-                    <th>宛名</th><th style="padding: 5px; color: #000;"><%= f.text_field :name, class: "name",:size=>"21" %></th>
-                  </tr>
-              </table>
-              <div class="actions">
-                <%= f.submit "確認画面へ進む",class: "btn-default btn-sm",:style=>"background-color:black; color:#fff;" %>
-              </div>
-            <% end %>
+          <% if @order.errors.any? %>
+            <h2><%= @order.errors.count %> 個のエラーがあります</h2>
+            <ul>
+              <% @order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <table>
+        <p><tr><%= radio_button_tag :any, 3 %>新しいお届け先</tr></p>
+            <tr>
+              <th>郵便番号(ハイフン無し)</th><th><%= f.text_field :post_code, class: "post_code" %></th>
+            </tr>
+            <tr>
+              <th>住所</th><th><%= f.text_field :customer_address, class: "customer_address" %></th>
+            </tr>
+            <tr>
+              <th>宛名</th><th><%= f.text_field :name, class: "name" %></th>
+            </tr>
+        </table>
+      </div>
+        <div class="actions">
+          <%= f.submit "確認画面へ進む", class: "btn-primary btn-sm" %>
         </div>
     </div>
-  </div>
 </div>
-
-
+<% end %>
