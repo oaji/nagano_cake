@@ -20,3 +20,16 @@
 .y td{
 	padding: 10px 5px;
 }
+
+.orders_background_image {
+	background-image: url("../address_background.jpg");
+	background-size:cover;
+	height: 1200px;
+}
+
+.new_background_image{
+	background-image: url("../cartitems_background.jpeg");
+	background-size:auto;
+	background-position:bottom;
+	height: 1200px;
+}

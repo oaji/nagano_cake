@@ -1,4 +1,5 @@
-<h1 style="margin-top: 60px;"><h1>
+<div class="container">
+   <div class="row" style="margin-top:100px">
 
 <%# if customer_signed_in? %>
 	<%# if current_customer == @customer || current_customer.admin? %>
@@ -6,44 +7,48 @@
 	<%# end %>
 <%# end %>
 
-	<img src="/assets/no_image.png" alt="">
-	 	<div class="container">
-			<div class="row">
-		 		<div class="col-xs-2">
+<!-- ジャンル検索（パーシャル） -->
+    	<%= render "customers/items/genre_search", genres: @genres %>
 
-					<h2>商品検索</h2>
+		<main class="col-md-10">
+				<div class="row">
+					<div class="main-visual">
+						<div class="main-visual-image">
+						</div>
+						<div class="main-visual-text" >
+							<p>ようこそ、NaganoCakeへ！</p>
+							<p>このサイトは、ケーキ販売のECサイトになります。</p>
+							<p>会員でない方も商品の閲覧はできますが、</p>
+							<p>購入には会員登録が必要になります。</p>
+						</div>
+					</div>
+				</div>
 
 
+		    <div class='col-xs-9'>
+		      <h2>おすすめ商品</h2>
 
-						<div class="item-search">
-	  						<%= form_with(scope: :search, url: items_path, method: :get, local: true) do |f| %>
-	    						<div class="field">
-	      							<%= f.label :ジャンル %>
-	      							<%= f.text_field :item, value: @search_params %>
-								</div>
-							<% end %>
-	  					</div>
+				
 
+				<div class="row">
 
-	          	</div>
-	        </div>
-		</div>
-
-	<h2>おすすめ商品</h2>
-
-	<thead>
-	  <tr>
-		<th>1</th>
-		<th>2</th>
-		<th>3</th>
-		<th>4</th>
-	  </tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-			</td>
-		</tr>
-	</tbody>
+					<% @items.each do |item| %>
+						<div class="box" style="float:left; margin-right:20px;">
+						            <!-- 画像をクリックしたら商品詳細画面へ遷移 -->
+					        <%= link_to item_path(item.id), data: {"turbolinks"=>false} do %>
+			        			<%= attachment_image_tag item, :image, size: "170x170",  fallback: "no_image.png"%><br>
+						    <% end %>
+						    <p><%= item.name %></p>
+			            	<p><%= item.price %>円</p>
+			          	</div>
+		        	<% end %>
+		    	</div>
+		        <%= link_to items_path do %>
+					<p style="text-align: right;">もっと見る></p>
+				<% end %>
+			</div>
+		</main>
+	</div>
+</div>
 
 

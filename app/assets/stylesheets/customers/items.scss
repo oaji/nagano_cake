@@ -1,3 +1,19 @@
 // Place all the styles related to the customers::items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.items_background{
+	background-image: url("../items_background.jpg");
+	height: 1500px;
+	background-size: cover;
+}
+
+.mytable {
+	color: #fff;
+	background-color: rgba(0,0,0,0.5);
+}
+
+h5{
+	color: #fff;
+}
