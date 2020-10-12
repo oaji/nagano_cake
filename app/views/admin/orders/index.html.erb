@@ -1,23 +1,27 @@
 <div class="container">
-<h1>注文履歴一覧</h1>
+<h1 style="margin-top: 120px;">注文履歴一覧</h1>
 <table style="border:none" class="b">
 	<thead>
 		<tr>
-			<th>購入日時</th><th>購入者</th>
-			<th>注文個数</th><th>注文ステータス</th>
+			<th style="color: #000;">購入日時</th>
+			<th style="color: #000;">購入者</th>
+			<th style="color: #000;">注文個数</th>
+			<th style="color: #000;">注文ステータス</th>
 		</tr>
 	</thead>
-	<body>
 		<% @orders.each do |order| %>
+		<tbody style="color: #000;">
 			<tr>
-				<td><%= order.created_at %></td>
-				<%#= link_to admin_order_path(order) %></td>
-				<%# @customer = %>
+				<td><%= link_to admin_order_path(order.id) do %>
+						<%= l order.created_at, format: :long %>
+					<% end %>
+				</td>
 				<td><%= order.name %></td>
-				<td><%= order.quantity %></td>
-				<td><%= order.order_status %></td>
+				<td><%= order.order_items.sum(:quantity) %></td>
+				<td><%= order.order_status %>
+					<%#= select :order, :order_status, Order.order_statuses.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %></td>
 			</tr>
 		<% end %>
-	</body>
+	</tbody>
 </table>
 </div>

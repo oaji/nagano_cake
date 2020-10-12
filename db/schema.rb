@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_051713) do
+
+ActiveRecord::Schema.define(version: 2020_10_11_055953) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -49,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_051713) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active", default: true, null: false
+    t.boolean "is_active"
     t.string "first_name"
     t.string "first_name_kana"
     t.string "family_name"
@@ -57,7 +59,6 @@ ActiveRecord::Schema.define(version: 2020_10_08_051713) do
     t.string "post_code"
     t.string "address"
     t.string "telephone"
-    t.boolean "is_valid", default: true, null: false
     t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_051713) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "is_active", default: true
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,12 +83,13 @@ ActiveRecord::Schema.define(version: 2020_10_08_051713) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "product_id"
+    t.integer "item_id"
     t.integer "order_id"
     t.integer "quantity"
     t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -103,4 +105,14 @@ ActiveRecord::Schema.define(version: 2020_10_08_051713) do
     t.string "address"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.text "introduction"
+    t.boolean "is_active"
+    t.string "image_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end

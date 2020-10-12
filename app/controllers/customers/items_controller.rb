@@ -21,13 +21,6 @@ class Customers::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new(item_id: @item.id)
     @genres = Genre.where(is_active: true)
-
-    if current_customer.nil?
-		  @items = Item.all
-    else
-		  @items = current_customer.cart_items
-    end
-
   end
 
   def search

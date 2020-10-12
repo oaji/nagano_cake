@@ -1,92 +1,87 @@
-<h1 style="margin-top: 60px;"><%= @customer.family_name %><%= @customer.first_name%>さんの会員情報編集</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 style="margin-top: 120px;"><%= @customer.family_name %><%= @customer.first_name%>さんの会員情報編集</h1>
+					<%= form_with model: @customer, url:admin_customer_path(@customer), method: :patch, local: true do |f| %>
+					<%= render 'layouts/error', model: f.object %>
+						<table class="table" style="width:500px;">
+						  <tr>
+						    <th class="list_name">会員ID</th>
+						    <td>
+								<%= @customer.id %>
+							</td>
+						  </tr>
 
-<table>
-	<%= form_with model: @customer, url:admin_customer_path(@customer), method: :patch, local: true do |f| %><!--local: trueにすることで非同期で行わないようにしている-->
-	<%= render 'layouts/error', model: f.object %>
+						  <tr>
+						    <th class="list_name">氏名</th>
+							    <td><div class="field">
+										<%= f.text_field :family_name %>
+									</div>
+								</td>
+								<td><div class="field">
+										<%= f.text_field :first_name %>
+									</div>
+								</td>
+						  </tr>
 
-		<tbody>
-		  <tr>
-		    <th>会員ID</th>
-		    <td>
-				<%= @customer.id %>
-			</td>
-		  </tr>
+						  <tr>
+						    <th class="list_name"> フリガナ</th>
+						    	<td><div class="field">
+										<%= f.text_field :family_name_kana %>
+									</div>
+								</td>
+								<td><div class="field">
+										<%= f.text_field :first_name_kana %>
+									</div>
+								</td>
+						  </tr>
 
-		  <tr>
-		    <th>氏名</th>
-			    <td><div class="field">
-						<%= f.text_field :family_name %>
-					</div>
-				</td>
-				<td><div class="field">
-						<%= f.text_field :first_name %>
-					</div>
-				</td>
-		  </tr>
+						  <tr>
+						    <th class="list_name">郵便番号</th>
+							    <td><div class="field">
+										<%= f.text_field :post_code %>
+									</div>
+								</td>
+						  </tr>
 
-		  <tr>
-		    <th>フリガナ</th>
-		    	<td><div class="field">
-						<%= f.text_field :family_name_kana %>
-					</div>
-				</td>
-				<td><div class="field">
-						<%= f.text_field :first_name_kana %>
-					</div>
-				</td>
-		  </tr>
+						  <tr>
+						    <th class="list_name">住所</th>
+						    	<td><div class="field">
+										<%= f.text_field :address %>
+									</div>
+								</td>
+						  </tr>
 
-		  <tr>
-		    <th>郵便番号</th>
-			    <td><div class="field">
-						<%= f.text_field :post_code %>
-					</div>
-				</td>
-		  </tr>
+						  <tr>
+						    <th class="list_name">電話番号</th>
+						    	<td><div class="field">
+										<%= f.text_field :telephone %>
+									</div>
+								</td>
+						  </tr>
 
-		  <tr>
-		    <th>住所</th>
-		    	<td><div class="field">
-						<%= f.text_field :address %>
-					</div>
-				</td>
-		  </tr>
+						  <tr>
+						    <th class="list_name">メールアドレス</th>
+								<td><div class="field">
+										<%= f.text_field :email %>
+									</div>
+								</td>
+						  </tr>
 
-		  <tr>
-		    <th>電話番号</th>
-		    	<td><div class="field">
-						<%= f.text_field :telephone %>
-					</div>
-				</td>
-		  </tr>
+						  <tr>
+						    <th class="list_name">会員ステータス</th>
+							    <td>
+							    	<label><%= f.radio_button :is_active, :true %> 有効 </label><!--booleanはtかfを返す-->
+									<label><%= f.radio_button :is_active, :false %> 無効</label>
+							    </td>
+						  </tr>
+						</table>
 
-		  <tr>
-		    <th>メールアドレス</th>
-				<td><div class="field">
-						<%= f.text_field :email %>
-					</div>
-				</td>
-		  </tr>
+							  	<div class="actions">
+									<%= f.submit '変更を保存する',class: "btn btn-primary" %>
+								</div>
 
-		  <tr>
-		    <th>会員ステータス</th>
-			    <td>
-			    	<label><%= f.radio_button :is_active, :true %> 有効 </label><!--booleanはtかfを返す-->
-					<label><%= f.radio_button :is_active, :false %> 無効</label>
-			    </td>
-		  </tr>
-
-		  <tr>
-		  	<td>
-			  	<div class="actions">
-					<%= f.submit class: "btn btn-primary col-xs-12" %>
-				</div>
-			<td>
-		  </tr>
-
-		  <% end %>
-		</tbody>
-
-</table>
-
-
+						  <% end %>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
-  # before_action :admin_customer
   before_action :authenticate_admin!
+
 
   def index
   	@orders = Order.page(params[:page])
@@ -12,8 +12,9 @@ class Admin::OrdersController < ApplicationController
 
   def update
   	@order = Order.find(params[:id])
-  	@order.update(params[:id])
+  	if @order.update(order_params)
 	  redirect_to addmins_orders_path
+    end
   end
 
   private

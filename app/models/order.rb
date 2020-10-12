@@ -1,10 +1,10 @@
 class Order < ApplicationRecord
-	belongs_to :customer
-    belongs_to :item
-    has_many :order_items
+  	belongs_to :customer
+    belongs_to :item, optional: true
+    has_many :order_items, dependent: :destroy
 
     validates :name, presence: true
-    validates :addressee, presence: true
+    validates :address, presence: true
     validates :post_code, presence: true
     validates :how_to_pay, presence: true
 

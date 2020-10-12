@@ -1,9 +1,12 @@
 class Customers::CartItemsController < ApplicationController
-  before_action :authenticate_customer!
+
+  before_action:authenticate_customer!,except:[:index]
 
 	def index
 		@cart_items = CartItem.all
 	end
+
+
 
   	def create
   		@cart_item = current_customer.cart_items.new(cart_item_params)
@@ -23,19 +26,18 @@ class Customers::CartItemsController < ApplicationController
   		@cart_items = CartItem.all
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
-    	redirect_to cart_items_path
 	end
 
+
 	def destroy #一点消す
+		@cart_items = CartItem.all
 		@cart_item = CartItem.find(params[:id])
-    	@cart_item.destroy
-    	redirect_to cart_items_path
+    @cart_item.destroy
 	end
 
 	def destroy_all #カート内商品全消し
-		@cart_item = CartItem.all
-		@cart_item.destroy_all
-		redirect_to cart_items_path
+		@cart_items = CartItem.all
+		@cart_items.destroy_all
 	end
 
 
