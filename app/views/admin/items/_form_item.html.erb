@@ -1,36 +1,27 @@
-
-<div class="form-group">
+<div class="form-group" >
   <%= f.label :"商品名", class: "col-sm-3 control-label" %>
   <%= f.text_field :name, class: "col-sm-9 form-control-static name" %>
 </div>
-<br>
-<br>
 
-<div class="form-group">
+<div class="form-group" style ="margin-top: 50px">
   <%= f.label :"商品説明", class: "col-sm-3 control-label" %>
-  <%= f.text_area :introduction, class: "col-sm-9 control-label introduction", rows: 3 %>
+  <%= f.text_area :introduction, class: "col-sm-9 control-label introduction", rows: 5 %>
 </div>
-<br>
-<br>
-<br>
-<br>
 
-<div class="form-group">
+<div class="form-group" style ="margin-top: 170px">
   <%= f.label :"ジャンル", class: "col-sm-3 control-label" %>
   <%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 genre_id" %>
 </div>
 
-<div class="form-group">
+<div class="form-group" >
   <%= f.label :"税抜価格", class: "col-sm-3 control-label" %>
   <%= f.text_field :price, class: "col-sm-3 form-control-static price" %>円
 </div>
-<br>
 
-<div class="form-group">
+<div class="form-group" style ="margin-top: 35px">
   <%= f.label :"販売ステータス", class: "col-sm-3 control-label" %>
   <%= f.select :is_active, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "col-sm-9 is_active" %>
 </div>
-<br>
 
 <div class="actions col-xs-7">
   <%= f.submit '登録', class: "btn btn-primary btn-lg pull-right" %>

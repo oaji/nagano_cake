@@ -1,4 +1,5 @@
 class Customers::AddressesController < ApplicationController
+
   def index
     @customer = current_customer
     @addresses = current_customer.addresses
@@ -10,7 +11,8 @@ class Customers::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      redirect_to addresses_path, notice: "住所の登録が完了しました"
+      flash[:success] = "住所の登録が完了しました"
+      redirect_to addresses_path
     else
        @addresses = Address.all
        @address = Address.new
@@ -27,13 +29,15 @@ class Customers::AddressesController < ApplicationController
   def update
   	@address = Address.find(params[:id])
   	@address.update(address_params)
-	  redirect_to addresses_path, notice: "編集が完了しました"
+    flash[:success] = "編集が完了しました"
+	  redirect_to addresses_path
   end
 
   def destroy
   	@address = Address.find(params[:id])
   	@address.destroy
-  	redirect_to addresses_path, notice: "消去が完了しました"
+    flash[:success] = "消去が完了しました"
+  	redirect_to addresses_path
   end
 
   private
