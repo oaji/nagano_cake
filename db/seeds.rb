@@ -34,32 +34,9 @@ Order.create(
 	)
 
 OrderItem.create(
-	quantity: 5,
+	quantity: 2,
 	order_status: 0,
 	item_id: 1,
 	order_id: 1,
   price: 500
 	)
-
-
-  # create_table "order_items", force: :cascade do |t|
-  #   t.integer "order_id"
-  #   t.integer "quantity"
-  #   t.integer "order_status"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  #   t.integer "item_id"
-  # end
-
-  # create_table "orders", force: :cascade do |t|
-  #   t.integer "customer_id"
-  #   t.string "name"
-  #   t.string "post_code"
-  #   t.integer "how_to_pay"
-  #   t.integer "deliver_fee"
-  #   t.integer "order_status"
-  #   t.integer "total_payment"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  #   t.string "address"
-  # end

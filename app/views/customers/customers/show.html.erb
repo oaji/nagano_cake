@@ -41,15 +41,14 @@
 			<table>
 
 					<tr style="margin-top: : 10px;">
-						<!-- <th><h4><strong>配送先</strong></h4></th> -->
-						<td><%#= link_to '配送先一覧を見る',addresses_path, class: 'btn btn-default btn-md',:style=>"background-color:#003300; color:#fff;" %>
+						<td>
 							<%= link_to addresses_path, method: :get do %>
 								<span class="glyphicon glyphicon-home" aria-hidden="true" style="font-size: 15px; color: #fff; font-weight: 600; margin-bottom: 10px;">　配送先一覧を見る</span>
 							<% end %>
 						</td>
 					</tr>
 					<tr>
-						<td><%#= link_to '注文履歴一覧を見る',orders_path, class: 'btn btn-default btn-md',:style=>"background-color:#444; color:#fff;" %>
+						<td>
 							<%= link_to orders_path, method: :get do %>
 								<span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 15px; color: #fff; font-weight: 600;">　注文履歴を見る</span>
 							<% end %>

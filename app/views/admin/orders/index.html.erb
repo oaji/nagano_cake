@@ -16,10 +16,9 @@
 						<%= l order.created_at, format: :long %>
 					<% end %>
 				</td>
-				<td><%= order.name %></td>
+				<td><%= order.customer.family_name %><%= order.customer.first_name %></td>
 				<td><%= order.order_items.sum(:quantity) %></td>
-				<td><%= order.order_status %>
-					<%#= select :order, :order_status, Order.order_statuses.map { |k, v| [t("enums.order.order_status.#{k}"), v] } %></td>
+				<td><%= order.order_status %></td>
 			</tr>
 		<% end %>
 	</tbody>

@@ -22,20 +22,20 @@ class Customers::CartItemsController < ApplicationController
     	end
   	end
 
-  	def update#カート内商品データ更新
+  def update
   		@cart_items = CartItem.all
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
 	end
 
 
-	def destroy #一点消す
+	def destroy
 		@cart_items = CartItem.all
 		@cart_item = CartItem.find(params[:id])
     @cart_item.destroy
 	end
 
-	def destroy_all #カート内商品全消し
+	def destroy_all
 		@cart_items = CartItem.all
 		@cart_items.destroy_all
 	end
