@@ -103,16 +103,4 @@ ActiveRecord::Schema.define(version: 2020_10_12_035423) do
     t.datetime "updated_at", null: false
     t.string "address"
   end
-
-  create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.boolean "is_active"
-    t.string "image_id"
-    t.integer "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end
