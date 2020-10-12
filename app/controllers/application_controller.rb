@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   when Admin
     admin_admins_top_path
   when Customer
-    admins_sign_in_path
+    root_path
   end
 end
 

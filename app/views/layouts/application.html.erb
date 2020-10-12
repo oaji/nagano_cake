@@ -36,27 +36,38 @@
               <% end %>
               さん。</p></div>
             </li>
-            <li class="nav-list-item"><%= link_to 'マイページ', customers_path %></li>
-            <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
-            <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %></li>
-            <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
-          <% elsif admin_signed_in? %>
+          <% end %>
+
+          <% if admin_signed_in? %>
             <li class="nav-list-item"><%= link_to '商品一覧', admin_items_path %></li>
             <li class="nav-list-item"><%= link_to '会員一覧', admin_customers_path %></li>
             <li class="nav-list-item"><%= link_to '注文履歴一覧', admin_orders_path %></li>
             <li class="nav-list-item"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
             <li class="nav-list-item"><%= link_to 'ログアウト', admins_sign_out_path, method: :delete %></li>
+          <% elsif customer_signed_in? %>
+            <li class="nav-list-item"><%= link_to 'マイページ', customers_path %></li>
+            <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
+            <li class="nav-list-item"><%= link_to '買い物カゴ', cart_items_path %></li>
+            <li class="nav-list-item"><%= link_to 'ログアウト', customers_sign_out_path, method: :delete %></li>
           <% else %>
             <li class="nav-list-item"><%= link_to 'About', customers_top_about_path %></li>
             <li class="nav-list-item"><%= link_to '商品一覧', items_path %></li>
             <li class="nav-list-item"><%= link_to '新規登録', customers_sign_up_path %></li>
             <li class="nav-list-item"><%= link_to 'ログイン', customers_sign_in_path %></li>
             <div class="collapse navbar-collapse" id="navbarEexample8"></div>
-          <%end%>
+          <% end %>
         </ul>
        </nav>
        </div>
       </header>
    <%= yield %>
+     <footer>
+          <div class="container">
+            <div class="footer">
+              <ul class="nav navbar-inverse pull-right">
+              </ul>
+            </div>
+          </div>
+      </footer>
   </body>
 </html>
