@@ -1,18 +1,19 @@
-<%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
-<div class="container new_background_image" style=" width: 100%; margin-top: 70px;">
-  <h2><strong>注文情報入力</strong></h2>
-    <div class="font">
-    <h3>支払方法</h3>
+<div class="container new_background_image" style=" width: 100%;">
+  <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+    <div style="margin-left: 300px;">
+      <h2 style="margin-top: 120px;"><strong>注文情報入力</strong></h2>
+      <div class="font">
+      <h3>支払方法</h3>
         <%= f.hidden_field :how_to_pay, value: 'how_to_pay' %>
-          <p><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</p>
-          <p><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</p>
+          <p><%= f.radio_button :how_to_pay, :クレジットカード %> クレジットカード</p>
+          <p><%= f.radio_button :how_to_pay, :銀行振込 %> 銀行振込</p>
         <h2>お届け先</h2>
-          <p><%= radio_button_tag :any, 1 %>ご自身の住所</p>
+          <p><%= radio_button_tag :any, 1 %> ご自身の住所</p>
           <td><%= @customer.post_code %>
             <%= @customer.address %></td><br>
             <%= @customer.family_name %>
             <%= @customer.first_name %></tr>
-          <p><tr><%= radio_button_tag :any, 2 %>登録済住所から選択</tr></p>
+          <p><tr><%= radio_button_tag :any, 2 %> 登録済住所から選択</tr></p>
           <tr>
             <%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
           </tr>
@@ -26,21 +27,22 @@
             </ul>
           <% end %>
         <table>
-        <p><tr><%= radio_button_tag :any, 3 %>新しいお届け先</tr></p>
+        <p><tr><%= radio_button_tag :any, 3 %> 新しいお届け先</tr></p>
             <tr>
-              <th>郵便番号(ハイフン無し)</th><th><%= f.text_field :post_code, class: "post_code" %></th>
+              <th style="padding:6px;">郵便番号(ハイフン無し) </th><th style="color: #000;"><%= f.text_field :post_code, class: "post_code" ,size:21 %></th>
             </tr>
             <tr>
-              <th>住所</th><th><%= f.text_field :customer_address, class: "customer_address" %></th>
+              <th style="padding:6px;">住所</th><th style="color: #000;"><%= f.text_area :customer_address, class: "customer_address" %></th>
             </tr>
             <tr>
-              <th>宛名</th><th><%= f.text_field :name, class: "name" %></th>
+              <th style="padding:6px;">宛名</th><th style="color: #000;"><%= f.text_field :name, class: "name",size:21 %></th>
             </tr>
         </table>
       </div>
         <div class="actions">
-          <%= f.submit "確認画面へ進む", class: "btn-primary btn-sm" %>
+          <%= f.submit "確認画面へ進む",  class: "btn btn-default",:style=>"background-color:black; color:#fff;" %>
         </div>
     </div>
+  </div>
 </div>
 <% end %>

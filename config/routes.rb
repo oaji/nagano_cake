@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :new, :create, :show, :edit, :update]
       resources :genres, only: [:edit, :index, :create, :update]
       get 'admins/top' => 'admins/top'
+      resources :order_items, only: [:update]
+
     end
 
     scope module: :customers do

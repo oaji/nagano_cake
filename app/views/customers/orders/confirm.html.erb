@@ -51,6 +51,7 @@
 				</table>
 				<div style="margin-top: 20px; text-align: center;">
 				<%= form_for (@order) do |f| %>
+				<%= f.hidden_field :total_payment, value: @sum + @deliver_fee %>
 					<%= f.submit '購入を確定する', class: "btn-default btn-sm",:style=>"background-color:black; color:#fff;" %>
 				<% end %>
 				 </div>

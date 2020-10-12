@@ -13,13 +13,11 @@
 		<td><%= attachment_image_tag cart_item.item, :image, size: "60x60", fallback: "no_image.png"%></td>
 		<td><%= cart_item.item.name %></td>
 		<td><%= (cart_item.item.price*1.10).round %></td>
-		<% @sum += (cart_item.quantity*cart_item.item.price*1.10).round %>
 		<td style="color: #000;">
 		<%= form_with model: cart_item,url:cart_item_path(cart_item.id), method: :patch, remote: true do |f| %>
-		<div id="update_quantity">
+		<% @sum += (cart_item.quantity*cart_item.item.price*1.10).round %>
 		<%= f.number_field :quantity , value:cart_item.quantity, min:1 %>
 		<%= f.submit '変更', class: "btn btn-default",:style=>"background-color:#444; color:#fff;" %>
-		</div>
 		<% end %>
 		</td>
 		<td><%= (cart_item.item.price*cart_item.quantity*1.10).round %></td>
@@ -28,6 +26,6 @@
 	</tr>
 </table>
 <div class="text-right">
-					<h4><strong>合計金額</strong></h4>
-					<h3><strong><%= @sum %>円</strong></h3>
-				</div>
+<h4><strong>合計金額</strong></h4>
+<h3><strong><%= @sum %>円</strong></h3>
+</div>
