@@ -36,12 +36,16 @@ a:hover{
 　text-decoration: none;
 }
 
+.navbar-inverse {
+	background-color: #000;
+}
 /*ブランドロゴのデザイン*/
 .navbar-brand {
 font-family: 'Sacramento', cursive;
-font-size: 200%;
+font-size: 250%;
 padding-top: 30px;
-padding-right: 100px;
+padding-right: 200px;
+font-weight: nomal;
 }
 
 .navbar-list-item {
@@ -53,3 +57,21 @@ padding-right: 100px;
 .no-underline {
 	text-decoration:none !important;
 	}
+
+html {
+ position: relative;
+ min-height: 100%;
+}
+body{
+/* footerの高さの最大値 */
+ padding-bottom: 0;
+}
+footer{
+ min-height: 100px;
+/* footerの最小値 */
+ width:100%;
+ position: absolute;
+ bottom: 0;
+ margin-bottom: 0;
+ background-color: #000;
+}

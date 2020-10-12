@@ -37,5 +37,6 @@ OrderItem.create(
 	quantity: 2,
 	order_status: 0,
 	item_id: 1,
-	order_id: 1
+	order_id: 1,
+  price: 500
 	)

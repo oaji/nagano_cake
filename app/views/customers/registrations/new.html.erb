@@ -1,13 +1,17 @@
-<div class="container">
-  <h2 style="margin-top:120px;">Sign up</h2>
+<h1 style="margin-top: 100px;"></h1>
 
     <%= form_for(resource, as: resource_name, url: customers_sign_up_path) do |f| %>
     <%= render "customers/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :family_name %><br />
-      <%= f.text_field :family_name, autofocus: true, class: "family_name" %>
-    </div>
+
+  <div class="container" style="padding-left: 450px;">
+<h3>新規登録</h3>
+
+  <div class="field">
+    <%= f.label :family_name %>姓<br />
+    <%= f.text_field :family_name, autofocus: true, class: "family_name" %>
+  </div>
+
 
     <div class="field">
       <%= f.label :first_name %><br />
@@ -52,16 +56,12 @@
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
 </div>
-
-  <div class="actions">
+  <div class="actions" style="padding-left: 400px;">
     <%= f.submit "登録" %>
   </div>
 <% end %>
-
-

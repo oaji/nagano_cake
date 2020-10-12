@@ -3,14 +3,53 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+html {
+ position: relative;
+ min-height: 800px;
+}
+
 .top_background {
-	background-image: url("../top_background2.jpg");
+	background-image: url("../top_background.jpg");
 	background-size: 1600px;
 	background-position: bottom;
 	width: auto;
-	height: 1400px;
+	height: 1100px;
 }
 
-.main-text {
-	font-color: white;
+.row {
+	padding-top: 10px;
+}
+
+.recommend {
+	color: #ddd;
+}
+
+.main-visual-text {
+	color: #ddd;
+	font-size: 17px;
+	text-align: 50%;
+	font-weight: bold;
+	padding-top: 80px;
+	padding-left: 200px;
+}
+
+.image1 {
+  background-image: url("../image1.jpg");
+  background-size: 50%;
+}
+.image2 {
+  background-image: url("../image2.jpg");
+}
+.image3 {
+  background-image: url("../image3.jpg");
+}
+.image4 {
+  background-image: url("../image4.jpg");
+}
+.image5 {
+  background-image: url("../image5.jpg");
+}
+
+#container{
+  height: 200px;
 }

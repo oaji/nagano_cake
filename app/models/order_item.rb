@@ -1,5 +1,6 @@
 class OrderItem < ApplicationRecord
 	belongs_to :order
+	belongs_to :item
 
 	enum order_status: {
 		製作不可: 0,
