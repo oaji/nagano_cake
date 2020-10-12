@@ -1,4 +1,6 @@
 class Customers::AddressesController < ApplicationController
+  before_action :authenticate_admin!
+
 
   def index
     @customer = current_customer
