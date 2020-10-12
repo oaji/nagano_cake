@@ -3,7 +3,7 @@ class Customers::AddressesController < ApplicationController
     @customer = current_customer
     @addresses = current_customer.addresses
   	@address = Address.new
-    #@addresses = Address.page(params[:page]).reverse_order
+    @addresses = Address.page(params[:page]).reverse_order
   end
 
   def create
