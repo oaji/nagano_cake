@@ -5,8 +5,8 @@ class Item < ApplicationRecord
 	# カートの商品との紐付け
 	has_many :cart_items, dependent: :destroy
 	# 注文詳細との紐付け
-	has_many :ordered_items,dependent: :destroy
-	has_many :orders, through: :ordered_items
+	has_many :order_items,dependent: :destroy
+	#has_many :orders, through: :ordered_items
 	# ジャンルとの紐付け
 	belongs_to :genre
 

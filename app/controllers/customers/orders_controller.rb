@@ -5,13 +5,20 @@ class Customers::OrdersController < ApplicationController
     @orders = Order.all
     @order = Order.new
     @addresses = Address.all
+    @order_items = @order.order_items
     @customer = current_customer
+    @orders = Order.page(params[:page]).reverse_order
   end
 
   def show
     @order = Order.find(params[:id])
-    new_order.customer_id = current_customer.id
-    new_order.save
+    @order_item = @order.order_items
+    @order_new = Order.new
+    @customer = @order.customer
+    @sum = 0
+    @order.order_items.each do |s|
+      @sum += s.price * s.quantity
+    end
   end
 
   def new
@@ -28,10 +35,10 @@ class Customers::OrdersController < ApplicationController
        session[:order][:address] = current_customer.address
        session[:order][:name] = current_customer.family_name + current_customer.first_name
     elsif params[:any].to_i == 2
-       address = Address.find(params[:order][:address])
-       session[:order][:post_code] = address.post_code
-       session[:order][:address] = address.customer_address
-       session[:order][:name] = address.name
+      address = Address.find(params[:order][:address])
+      session[:order][:post_code] = address.post_code
+      session[:order][:address] = address.customer_address
+      session[:order][:name] = address.name
     else
       @address = Address.new(post_code: params[:order][:post_code], customer_address: params[:order][:customer_address], name: params[:order][:name])
       @address.customer_id = current_customer.id
@@ -45,6 +52,11 @@ class Customers::OrdersController < ApplicationController
     session[:order][:deliver_fee] = 800
     @deliver_fee = 800
     @order = session[:order]
+    if @order.name.blank? or
+       @order.post_code.blank? or
+       @order.address.blank?
+       redirect_to new_order_path
+    end
   end
 
   def complete
@@ -59,7 +71,6 @@ class Customers::OrdersController < ApplicationController
     @order.save!
     order_item = []
       @order_items = current_customer.cart_items
-        #byebug
         @order_items.each do |i|
           order_item << @order.order_items.build(item_id: i.item_id, quantity: i.quantity, order_status: 1, price: i.item.price)
         end
