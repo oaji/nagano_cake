@@ -44,11 +44,12 @@
 				</tr>
 					<% @sum = 0 %>
 					<% @order_items.each do |orderitem| %>
+					<%= @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %>
 				<tr style="font-size: 17px;">
 					<td><%= Item.find(orderitem.item_id).name %></td>
 					<td><%= (Item.find(orderitem.item_id).price*1.10).round %></td>
 					<td><%= orderitem.quantity %></td>
-					<td><%= @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %></td>
+					<td><%= orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round %></td>
 					<%= form_with model: orderitem,url:admin_order_item_path(orderitem.id), method: :patch, "data-turbolinks": false ,local: true  do |f| %>
 					<td>
 						<%= f.select :order_status, OrderItem.order_statuses.keys.to_a, {} %> 
