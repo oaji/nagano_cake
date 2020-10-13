@@ -6,8 +6,6 @@ class Customers::CartItemsController < ApplicationController
 		@cart_items = CartItem.all
 	end
 
-
-
 	def create
     @cart_item = current_customer.cart_items.build(cart_item_params)
     @cart_items = current_customer.cart_items.all
@@ -27,6 +25,7 @@ class Customers::CartItemsController < ApplicationController
   		@cart_items = CartItem.all
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
+
 	end
 
 
