@@ -25,6 +25,7 @@ class Customers::CartItemsController < ApplicationController
   		@cart_items = CartItem.all
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
+
 	end
 
 
