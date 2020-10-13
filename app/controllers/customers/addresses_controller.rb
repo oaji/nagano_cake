@@ -1,5 +1,5 @@
 class Customers::AddressesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_customer!
 
 
   def index

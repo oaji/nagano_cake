@@ -10,10 +10,10 @@
 
   <%= form_for [:admin, @item] do |f| %>
 
-    <div class="col-xs-5" style ="margin-top: 40px">
+    <div class="col-xs-5" style ="margin-top: 20px">
 
       <div class="item-img">
-        <%= attachment_image_tag @item, :image, id: "file-preview", style: "width:100%; "%>
+        <%= attachment_image_tag @item, :image, id: "file-preview", style: "width:80%; "%>
       </div>
 
       <div class="item-new-form">
@@ -22,7 +22,7 @@
 
     </div>
 
-    <div class="col-xs-5" style ="margin: 40px">
+    <div class="col-xs-5" style ="margin-top: 20px">
       <%= render "form_item", f: f %>
     </div>
 
