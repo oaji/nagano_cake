@@ -2,6 +2,10 @@ class Customers::CustomersController < ApplicationController
 
 	before_action :authenticate_customer!
 
+	def index
+		@orders = Order.all
+	end
+
 	def show
 		@customer = current_customer
 	end
@@ -25,9 +29,7 @@ class Customers::CustomersController < ApplicationController
 
     def complete
     	@customer = current_customer
-        #is_deletedカラムにフラグを立てる(defaultはfalse)
         @customer.update(is_deleted: true)
-        #ログアウトさせる
         reset_session
         flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
         redirect_to root_path

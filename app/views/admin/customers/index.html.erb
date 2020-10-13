@@ -13,22 +13,22 @@
 			<tbody>
 				<% @customers.each do |customer| %>
 				<tr>
-					<td>
+					<td  style="padding-top: 20px;">
 						<%= customer.id %>
 					</td>
 
-					<td>
+					<td style="padding-top: 20px;">
 						<%= link_to admin_customer_path(customer.id) do %>
 							<%= customer.family_name %><%= customer.first_name %>
 						<% end %>
 					</td>
 
-					<td>
+					<td style="padding-top: 20px;">
 						<%= customer.email %>
 					</td>
 
-					<td>
-						<% if customer.is_active == true %>
+					<td style="padding-top: 20px;">
+						<% if customer.is_deleted == false %>
 				 			<h5>有効</h5>
 				 		<% else %>
 				 			<h5>無効</h5>

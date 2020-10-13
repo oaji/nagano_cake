@@ -24,9 +24,6 @@ table.b{
 	width: auto;
 }
 
-.text-center{
-}
-
 .pagination>.active>a {
   background: #93c9ff;
   border-radius: 15px;
@@ -56,6 +53,7 @@ th{
 	height:300px;
 	color: #fff;
 	background-color: rgba(0,0,0,0.5);
+	text-align:center;
 }
 
 .addinfo{

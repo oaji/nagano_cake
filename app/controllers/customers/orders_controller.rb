@@ -28,6 +28,17 @@ class Customers::OrdersController < ApplicationController
   end
 
   def confirm
+    errors = ""
+    if params[:order][:how_to_pay] == nil
+      errors = "支払い方法を選択して下さい<br>"
+    end
+    if params[:any] == nil
+      errors += "配送先住所を選択して下さい"
+    end
+    if errors
+      redirect_to new_order_path, notice: errors
+      return
+    end
     session[:order] = Order.new(order_params)
     session[:order][:customer_id] = current_customer.id
     if params[:any].to_i == 1

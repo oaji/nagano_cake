@@ -1,5 +1,5 @@
 class Customers::AddressesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_customer!
 
 
   def index
@@ -20,7 +20,6 @@ class Customers::AddressesController < ApplicationController
        @address = Address.new
        render 'index'
     end
-    #byebug
   end
 
   def edit
