@@ -2,6 +2,10 @@ class Customers::CustomersController < ApplicationController
 
 	before_action :authenticate_customer!
 
+	def index
+		@orders = Order.all
+	end
+
 	def show
 		@customer = current_customer
 	end
