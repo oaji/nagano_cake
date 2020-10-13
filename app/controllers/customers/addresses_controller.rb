@@ -20,7 +20,6 @@ class Customers::AddressesController < ApplicationController
        @address = Address.new
        render 'index'
     end
-    #byebug
   end
 
   def edit

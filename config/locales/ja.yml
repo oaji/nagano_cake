@@ -16,9 +16,17 @@ ja:
       order_status:
         waiting: "入金待ち"
         confirmation: "入金確認"
-        production: "制作中"
+        production: "製作中"
         preparation: "準備中"
         done: "発送済み"
+
+    order_items:
+      order_status:
+        pending: "着手不可"
+        waiting: "製作待ち"
+        production: "製作中"
+        completed: "製作完了"
+
 
   orders:
       create_at:
