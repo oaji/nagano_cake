@@ -4,7 +4,8 @@ class Customers::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id:current_customer.id)
+    #@orders = current_customer.orders
     @order = Order.new
     @addresses = Address.all
     @order_items = @order.order_items
@@ -30,6 +31,18 @@ class Customers::OrdersController < ApplicationController
   end
 
   def confirm
+    if params[:order][:how_to_pay] == nil
+      errors = ""
+      errors = "支払い方法を選択して下さい<br>"
+    end
+    if params[:any] == nil
+      errors = ""
+      errors += "配送先住所を選択して下さい"
+    end
+    if errors
+      redirect_to new_order_path, notice: errors
+      return
+    end
     session[:order] = Order.new(order_params)
     session[:order][:customer_id] = current_customer.id
     if params[:any].to_i == 1
