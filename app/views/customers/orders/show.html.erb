@@ -1,43 +1,35 @@
 <div class="orders_background_image" >
 	<div class="container">
-		<div class="col-xs-12">
-			<div class="font">
+		<div class="font">
+			<div class="row">
+				<div class="col-xs-12">
 				<div style="color: #fff; margin-top: 120px;"><h2><strong>注文詳細履歴 </strong></h2></div>
-					<h3><strong>注文情報</strong></h3>
-					<table class="z mytable table_title" border='1' style="width: 800px; text-align: center;">
-						<tr>
-							<th>注文日</th><td><%= l @order.created_at, format: :long %></td>
-						</tr>
-						<tr>
-							<th>配送先</th><td><%= @order.post_code %><br>
-											  <%= @order.address %><br>
-											  <br>
-											  <%= @order.name %></td>
-						</tr>
-						<tr>
-							<th>支払方法</th><td><%= @order.how_to_pay %></td>
-						</tr>
-						<tr>
-							<th>ステータス</th><td><%= @order.order_status %></td>
-						</tr>
-					</table>
-					<h3><strong>注文内容</strong></h3>
-					<table class="z mytable" border="1" style="width: 800px; height:150px;  text-align: center;">
-						<tr class="table_title">
-							<th>商品</th><th>単価(税込)</th>
-							<th>個数</th><th>小計</th>
-						</tr>
-						<% @order.order_items.each do |order| %>
-						<tr>
-							<td><%= order.item.name %></td>
-							<td><%= (order.price * 1.1).round %></td>
-							<td><%= order.quantity %></td>
-							<td><%= (order.price * order.quantity * 1.1).round %></td>
-						</tr>
-						<% end %>
-					</table>
+				</div>
+			</div>
+		 	<div class="row">
+				<div class="col-xs-8">
+						<h3><strong>注文情報</strong></h3>
+						<table class="mytable table_title" border='1' style="width: 600px; text-align: center;">
+							<tr>
+								<th style="width: 100px">注文日</th><td><%= l @order.created_at, format: :long %></td>
+							</tr>
+							<tr>
+								<th>配送先</th><td><%= @order.post_code %><br>
+												  <%= @order.address %><br>
+												  <br>
+												  <%= @order.name %></td>
+							</tr>
+							<tr>
+								<th>支払方法</th><td><%= @order.how_to_pay %></td>
+							</tr>
+							<tr>
+								<th>ステータス</th><td><%= @order.order_status %></td>
+							</tr>
+						</table>
+				</div>
+				<div class="col-xs-4">
 					<h3><strong>請求情報</strong></h3>
-					<table class="z table_title mytable" border="1" style="width: 800px; height:200px; text-align: center;">
+					<table class="table_title mytable" border="1" style="width: 400px; height:150px">
 						<tr>
 							<th>商品合計</th><td><%= (@sum * 1.1).round %></td>
 						</tr>
@@ -47,7 +39,27 @@
 						<tr>
 							<th><strong>ご請求額</strong></th><td><%= @order.total_payment %></td>
 						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+				<h3><strong>注文内容</strong></h3>
+				<table class="mytable" border="1" style="width: 800px; height:200px">
+					<tr class="table_title">
+						<th>商品</th><th class="quan">単価(税込)</th>
+						<th>個数</th><th>小計</th>
+					</tr>
+					<% @order.order_items.each do |order| %>
+						<tr>
+							<td><%= order.item.name %></td>
+							<td><%= (order.price * 1.1).round %></td>
+							<td><%= order.quantity %></td>
+							<td><%= (order.price * order.quantity * 1.1).round %></td>
+						</tr>
+					<% end %>
 				</table>
+				</div>
 			</div>
 		</div>
 	</div>
