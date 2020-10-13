@@ -6,7 +6,7 @@
 				<tr>
 					<th style="color:#000;">購入者</th>
 					<td style="font-size: 17px;">
-						<%= link_to admin_customer_path, method: :get do %>
+						<%= link_to admin_customer_path(@order.customer.id), method: :get do %>
 						<%= @order.customer.family_name %><%= @order.customer.first_name%></td>
 						<% end %>
 				</tr>
@@ -49,7 +49,7 @@
 					<td><%= (Item.find(orderitem.item_id).price*1.10).round %></td>
 					<td><%= orderitem.quantity %></td>
 					<td><%= @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %></td>
-					<%= form_with model: orderitem,url:admin_order_path(orderitem.id), method: :patch, local: true do |f| %>
+					<%= form_with model: orderitem,url:admin_order_item_path(orderitem.id), method: :patch, local: true do |f| %>
 					<td>
 						<%= f.select :order_status, OrderItem.order_statuses.keys.to_a, {} %> 
 					</td>

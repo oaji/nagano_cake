@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="height: 1000px;">
   <h1 style="margin-top: 120px;">商品登録</h1>
   <p id="notice"><%= notice %></p>
 
@@ -6,10 +6,10 @@
     <%= render 'layouts/error', model: f.object %>
 
 
-    <div class="col-xs-5" style ="margin-top: 40px">
+    <div class="col-xs-5" style ="margin-top: 20px">
 
       <div class="item-img">
-        <%= image_tag 'no_image.png', id: "file-preview",  style: "width:100%; "%>
+        <%= image_tag 'no_image.png', id: "file-preview",  style: "width:80%; "%>
       </div>
 
       <div class="item-new-form">
@@ -18,7 +18,7 @@
 
     </div>
 
-    <div class="col-xs-5" style ="margin-top: 40px">
+    <div class="col-xs-5" style ="margin-top: 20px">
       <%= render "form_item", f: f %>
     </div>
 

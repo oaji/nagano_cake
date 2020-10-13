@@ -25,9 +25,7 @@ class Customers::CustomersController < ApplicationController
 
     def complete
     	@customer = current_customer
-        #is_deletedカラムにフラグを立てる(defaultはfalse)
         @customer.update(is_deleted: true)
-        #ログアウトさせる
         reset_session
         flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
         redirect_to root_path

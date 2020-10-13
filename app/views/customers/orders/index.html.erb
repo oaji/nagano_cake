@@ -2,7 +2,7 @@
 	<div class="container">
 	<h1 style="margin-top: 120px; margin-bottom: 20px; color: #fff;"><strong>注文履歴一覧</strong></h1>
 		<div class="font">
-		<table class="b" border="1" style="text-align: center;">
+		<table class="b mytable" border="1" style="text-align: center;">
 			<body>
 				<tr>
 					<th>注文日</th>
@@ -17,6 +17,7 @@
 						<td><%= l order.created_at , format: :long %></td>
 						<td><%= order.post_code %><br>
 							<%= order.address %><br>
+							<br>
 							<%= order.name %></td>
 						<td><% order.order_items.each do |s| %>
 								<p><%= s.item.name %></p>
