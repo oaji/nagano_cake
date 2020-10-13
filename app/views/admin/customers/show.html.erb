@@ -2,12 +2,15 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h1 style="margin-top: 120px;"><%= @customer.family_name %><%= @customer.first_name%>さんの会員詳細</h1>
-				<table class="table info_table" style="width: 500px; margin-top:20px;">
+			<div style="color: #000;">
+			</div>
+
+				<table class="table info_table" style="width: 600px; margin-top:20px;">
 					<tr>
 					<th class="list_name">顧客ID</th>
 					<td><%= @customer.id %></td>
 						<td>
-							<%if @customer.is_active == true %>
+							<%if @customer.is_deleted == false %>
 								<h5>有効</h5>
 							<% else %>
 								<h5>無効</h5>
@@ -47,7 +50,7 @@
 				</table>
 
 				<div style ="margin: 10px;">
-					<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary', data: {"turbolinks"=>false} %>
+					<%= link_to '編集する', edit_admin_customer_path(@customer.id),class: 'btn btn-primary'%>
 					<%= link_to '注文履歴一覧', admin_orders_path,class: 'btn btn-primary' %>
 				</div>
 		</div>
