@@ -6,19 +6,20 @@ class Customers::CartItemsController < ApplicationController
 		@cart_items = CartItem.all
 	end
 
-  	def create
-  		@cart_item = current_customer.cart_items.new(cart_item_params)
-
-    	if @cart_item.save
-      	flash[:notice] = "#{@cart_item.item.name}をカートに追加しました"
-      	redirect_to cart_items_path
-    	else
-      	@item = Item.find(params[:cart_item][:item_id])
-      	@cart_item = CartItem.new
-      	flash[:alert] = "個数を選択してください"
-      	render ("customer/items/show")
-    	end
-  	end
+	def create
+    @cart_item = current_customer.cart_items.build(cart_item_params)
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      if cart_item.item_id == @cart_item.item_id
+         new_quantity = cart_item.quantity + @cart_item.quantity
+         cart_item.update_attribute(:quantity, new_quantity)
+         @cart_item.delete
+      end
+    end
+    @cart_item.save
+    flash[:notice] = "#{@cart_item.item.name}をカートに追加しました"
+    redirect_to cart_items_path
+	end
 
   def update
   		@cart_items = CartItem.all
@@ -50,4 +51,3 @@ class Customers::CartItemsController < ApplicationController
 
 
 end
-
