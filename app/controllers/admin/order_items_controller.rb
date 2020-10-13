@@ -1,24 +1,26 @@
 class Admin::OrderItemsController < ApplicationController
 
 	def update
-  	@order_item = OrderItem.find(params[:id])
-  	@order_items = @order_item.order_items
-    @order_item.update(order_item_params)
-  	  if @order_item.order_status == 0
+  	@order = Order.find(params[:id])
+  	@order_items = @order.order_items
+    @order.update(order_item_params)
+  	  if @order.order_status == "着手不可"
          @order.order_status.update_all(order_status:0)
-       elsif @order_item.order_status == 1
+       elsif @order.order_status == "製作待ち"
          @order.order_status.update_all(order_status:1)
-       elsif @order_item.order_status == 2
+       elsif @order.order_status == "製作中"
          @order.order_status.update_all(order_status:2)
-       elsif @order_item.order_status == 3
+       elsif @order.order_status == "製作完了"
          @order.order_status.update_all(order_status:3)
       end
-	       redirect_to admin_order_path(@order.id)
+	       redirect_to request.referer
   end
 
   private
   def order_item_params
-  	params.permit(:quantity, :order_status)
+  	params.require(:order_item).permit(:quantity, :order_status)
   end
 
 end
+
+
