@@ -93,6 +93,7 @@
 * jquery
 * kaminari
 * payjp
+* activerecord-import
 
 ## 作成者
 * 中村　まこと
