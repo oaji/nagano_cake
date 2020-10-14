@@ -15,10 +15,10 @@
         <tr><%= radio_button_tag :any, 1 %>ご自身の住所
         </tr><br>
         <tr><%= @customer.post_code %>
-          <%= @customer.address %>
+            <%= @customer.address %>
         </tr><br>
         <tr><%= @customer.family_name %>
-          <%= @customer.first_name %>
+            <%= @customer.first_name %>
         </tr>
         <p><label><%= radio_button_tag :any, 2 %>登録済住所から選択</label></p>
     </div>
@@ -29,10 +29,10 @@
           <h2><%= @order.errors.count %> 個のエラーがあります</h2>
           <ul>
             <% @order.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+              <li><%= message %></li>
             <% end %>
           </ul>
-          <% end %>
+        <% end %>
         <table>
           <label><tr><%= radio_button_tag :any, 3, false, onClick: "changeDisabled()" %>新しいお届け先</tr></label>
           <tr id='post_code_text' style='display: none'>
@@ -45,11 +45,11 @@
             <th style="padding:6px;">宛名</th><th style="color: #000;"><%= f.text_field :name, class: "name",size:21 %></th>
           </tr>
         </table>
-        </div>
+      </div>
       <div class="actions">
         <%= f.submit "確認画面へ進む",  class: "btn btn-default",:style=>"background-color:black; color:#fff;" %>
       </div>
-  <% end %>
+    <% end %>
   </div>
   </div>
 </div>

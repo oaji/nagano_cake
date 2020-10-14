@@ -5,7 +5,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
    def new
-    unless customers_signed_in?
+    unless customer_signed_in?
      super
     else
       redirect_to root_path
