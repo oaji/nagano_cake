@@ -25,7 +25,6 @@ class Customers::CartItemsController < ApplicationController
   		@cart_items = CartItem.all
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
-
 	end
 
 
@@ -44,11 +43,8 @@ class Customers::CartItemsController < ApplicationController
 
 	private
 
-
-
   def cart_item_params
   	params.require(:cart_item).permit(:customer_id, :quantity, :item_id, :price)
   end
-
 
 end

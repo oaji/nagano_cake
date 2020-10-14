@@ -1,3 +1,8 @@
+<head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
 <div class="top_background">
 <div class="container">
    <div class="row" style="margin-top:100px">
@@ -16,7 +21,7 @@
 					<div class="main-visual">
 						<div class="main-visual-image">
 							<div id="container">
-							  <div id="theTarget">
+							  <div data-turbolinks="false" id="theTarget">
 							    <div class="image1"></div>
 							    <div class="image2"></div>
 							    <div class="image3"></div>

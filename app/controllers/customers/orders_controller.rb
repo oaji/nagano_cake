@@ -1,6 +1,5 @@
 class Customers::OrdersController < ApplicationController
   before_action :setup_item, only: [:destroy]
-  before_action :cart_item_validation
 
   def index
     #@orders = Order.where(customer_id:current_customer.id)
@@ -100,9 +99,6 @@ class Customers::OrdersController < ApplicationController
   end
 
   private
-  def cart_item_validation
-     current_customer.cart_items.empty?
-  end
 
   def setup_item
     @setup_item = CartItem.find(params[:id])
