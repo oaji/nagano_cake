@@ -26,7 +26,6 @@ class Customers::CartItemsController < ApplicationController
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
       flash[:add] = "数量変更しました"
-
 	end
 
 
@@ -45,11 +44,8 @@ class Customers::CartItemsController < ApplicationController
 
 	private
 
-
-
   def cart_item_params
   	params.require(:cart_item).permit(:customer_id, :quantity, :item_id, :price)
   end
-
 
 end

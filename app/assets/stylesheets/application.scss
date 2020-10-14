@@ -60,14 +60,19 @@ font-weight: nomal;
 
 html {
  position: relative;
- min-height: 100%;
+ min-height: 120%;
 }
 body{
 /* footerの高さの最大値 */
  padding-bottom: 0;
 }
+
+.nav-list-item {
+	font-weight: 600;
+}
+
 footer{
- min-height: 100px;
+ min-height: 80px;
 /* footerの最小値 */
  width:100%;
  position: absolute;

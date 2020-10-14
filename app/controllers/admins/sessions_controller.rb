@@ -4,9 +4,13 @@ class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+   def new
+    unless customers_signed_in?
+     super
+    else
+      redirect_to root_path
+    end
+   end
 
   # POST /resource/sign_in
   # def create
