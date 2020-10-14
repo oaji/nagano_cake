@@ -1,9 +1,9 @@
 class Customers::CartItemsController < ApplicationController
 
-  before_action:authenticate_customer!,except:[:index]
+  before_action :authenticate_customer!,except:[:index]
 
 	def index
-		@cart_items = CartItem.all
+		@cart_items = current_customer.cart_items
 	end
 
 	def create
@@ -25,6 +25,7 @@ class Customers::CartItemsController < ApplicationController
   		@cart_items = CartItem.all
   		@cart_item = CartItem.find(params[:id])
     	@cart_item.update(quantity:params[:cart_item][:quantity].to_i)
+      flash[:add] = "数量変更しました"
 
 	end
 

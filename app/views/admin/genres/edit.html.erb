@@ -2,11 +2,10 @@
 	<div class="row">
 		<div class="col-xs-12">
 
-			<p id="notice"><%= notice %></p> <!--サクセスメッセージ-->
 
 
-			<%= form_with model: @genre, url:admin_genre_path(@genre.id), method: :patch, local: true do |f| %><!--local: trueにすることで非同期で行わないようにしている-->
-			<%= render 'layouts/error', model: f.object %><!--エラーメッセージ -->
+			<%= form_with model: @genre, url:admin_genre_path(@genre.id), method: :patch, local: true do |f| %>
+			<%= render 'layouts/error', model: f.object %>
 
 
 				<div class="field">
@@ -15,7 +14,6 @@
 				</div>
 
 				<label><%= f.radio_button :is_active, :true %> 有効 </label>
-				<!--booleanはtかfを返す-->
 				<label><%= f.radio_button :is_active, :false %> 無効</label>
 
 				<div class="actions">

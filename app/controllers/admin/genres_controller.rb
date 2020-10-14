@@ -27,7 +27,8 @@ class Admin::GenresController < ApplicationController
 		@genre = Genre.find(params[:id])
 		@genres = Genre.all
 			if @genre.update(genre_params)
-				redirect_to admin_genres_path, notice: "Genre has successfully changed."
+				flash[:genre] = "商品ジャンルを変更しました"
+				redirect_to admin_genres_path
 			else
 				render :edit
 			end

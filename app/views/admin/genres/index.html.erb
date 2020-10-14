@@ -1,12 +1,12 @@
 <div class="container">
 
 	<h1 style="margin-top: 120px;">ジャンル一覧・追加</h1>
-		<p id="notice"><%= notice %></p> <!--サクセスメッセージ-->
+		<%= flash[:genre] %>
 
 
 		<%= form_with model: @genre, url:admin_genres_path, method: :post, local: true do |f| %> <!--html: {method:'GET'}がないとエラーになる-->
 			<%= render 'layouts/error', model: f.object %>
-				<h5>ジャンル</h5>
+
 				<%= f.text_field :name ,class: '' %>
 
 				<label><%= f.radio_button :is_active, :true %> 有効 </label><!--booleanはtかfを返す-->

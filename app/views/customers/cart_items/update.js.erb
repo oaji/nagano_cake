@@ -1,1 +1,5 @@
 $("#item_area").html("<%= j(render 'item_area', cart_items: @cart_items) %>");
+
+$(function(){
+  setTimeout("$('.time-limit').fadeOut('slow')", 1000)
+})

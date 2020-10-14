@@ -1,50 +1,55 @@
 <div class="container new_background_image" style=" width: 100%;">
-  <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
-    <h2 style="margin-top: 120px;"><strong>注文情報入力</strong></h2>
-    <div class="font">
-      <% if flash[:notice] %>
-        <p><%= flash[:notice].html_safe %></p>
-      <% end %>
-      <h3>支払方法</h3>
-        <p><label><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</label></p>
-        <p><label><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</label></p>
-        <h2>お届け先</h2>
-        <tr><%= radio_button_tag :any, 1 %>ご自身の住所
-        </tr><br>
-        <tr><%= @customer.post_code %>
-          <%= @customer.address %>
-        </tr><br>
-        <tr><%= @customer.family_name %>
-          <%= @customer.first_name %>
-        </tr>
-        <p><label><%= radio_button_tag :any, 2 %>登録済住所から選択</label></p>
-    </div>
-        <p><%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
-        </p>
-        <div class="font">
-           <% if @order.errors.any? %>
-          <h2><%= @order.errors.count %> 個のエラーがあります</h2>
-          <ul>
-            <% @order.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
+  <div style="margin-left: 500px;">
+
+    <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+      <h2 style="margin-top: 120px;"><strong>注文情報入力</strong></h2>
+      <div class="font">
+        <% if flash[:notice] %>
+          <p><%= flash[:notice].html_safe %></p>
         <% end %>
-      <table>
-      <label><tr><%= radio_button_tag :any, 3 %>新しいお届け先</tr></label>
-          <tr>
-            <th style="padding:6px;">郵便番号(ハイフン無し) </th><th style="color: #000;"><%= f.text_field :post_code, class: "post_code" ,size:21 %></th>
+
+        <h3>支払方法</h3>
+          <p><label><%= f.radio_button :how_to_pay, :クレジットカード %>クレジットカード</label></p>
+          <p><label><%= f.radio_button :how_to_pay, :銀行振込 %>銀行振込</label></p>
+          <h2>お届け先</h2>
+          <tr><%= radio_button_tag :any, 1 %>ご自身の住所
+          </tr><br>
+          <tr><%= @customer.post_code %>
+            <%= @customer.address %>
+          </tr><br>
+          <tr><%= @customer.family_name %>
+            <%= @customer.first_name %>
           </tr>
-          <tr>
-            <th style="padding:6px;">住所</th><th style="color: #000;"><%= f.text_area :customer_address, class: "customer_address" %></th>
-          </tr>
-          <tr>
-            <th style="padding:6px;">宛名</th><th style="color: #000;"><%= f.text_field :name, class: "name",size:21 %></th>
-          </tr>
-      </table>
+          <p><label><%= radio_button_tag :any, 2 %>登録済住所から選択</label></p>
       </div>
-      <div class="actions">
-        <%= f.submit "確認画面へ進む",  class: "btn btn-default",:style=>"background-color:black; color:#fff;" %>
+          <p><%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %></p>
+
+          <div class="font">
+             <% if @order.errors.any? %>
+            <h2><%= @order.errors.count %> 個のエラーがあります</h2>
+            <ul>
+              <% @order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <table>
+        <label><tr><%= radio_button_tag :any, 3 %>新しいお届け先</tr></label>
+            <tr>
+              <th style="padding:6px;">郵便番号(ハイフン無し) </th><th style="color: #000;"><%= f.text_field :post_code, class: "post_code" ,size:21 %></th>
+            </tr>
+            <tr>
+              <th style="padding:6px;">住所</th><th style="color: #000;"><%= f.text_area :customer_address, class: "customer_address" %></th>
+            </tr>
+            <tr>
+              <th style="padding:6px;">宛名</th><th style="color: #000;"><%= f.text_field :name, class: "name",size:21 %></th>
+            </tr>
+        </table>
+        </div>
+        <div class="actions">
+          <%= f.submit "確認画面へ進む",  class: "btn btn-default",:style=>"background-color:black; color:#fff;" %>
+        </div>
+
       </div>
 </div>
-<% end %>
+          <% end %>
