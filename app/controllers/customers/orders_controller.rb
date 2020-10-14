@@ -1,6 +1,5 @@
 class Customers::OrdersController < ApplicationController
   before_action :setup_item, only: [:destroy]
-  before_action :cart_item_validation
 
 
   def index
@@ -28,6 +27,9 @@ class Customers::OrdersController < ApplicationController
     @order = Order.new
     @address = Address.new
     @customer = current_customer
+    if current_customer.cart_items.empty?
+      redirect_to root_path
+    end
   end
 
   def confirm
@@ -99,11 +101,6 @@ class Customers::OrdersController < ApplicationController
   end
 
   private
-  def cart_item_validation
-    if current_customer.cart_items.empty?
-      redirect_to root_path
-    end
-  end
 
   def setup_item
     @setup_item = CartItem.find(params[:id])
