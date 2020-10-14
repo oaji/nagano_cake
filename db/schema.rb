@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_10_13_121449) do
 
-
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
     t.string "post_code"
@@ -50,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_121449) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active"
+    t.boolean "is_active", default: true, null: false
     t.string "first_name"
     t.string "first_name_kana"
     t.string "family_name"
@@ -65,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_121449) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
