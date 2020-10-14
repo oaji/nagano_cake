@@ -46,12 +46,14 @@ font-size: 250%;
 padding-top: 30px;
 padding-right: 200px;
 font-weight: nomal;
+border-bottom-color: #fff;
 }
 
-.navbar-list-item {
+.nav-list-item {
 	possition: top;
 	font-color: #fff;
-	padding: auto;
+	padding-right: 40px;
+	font-weight: 600;
 }
 
 .no-underline {
@@ -65,10 +67,6 @@ html {
 body{
 /* footerの高さの最大値 */
  padding-bottom: 0;
-}
-
-.nav-list-item {
-	font-weight: 600;
 }
 
 footer{

@@ -94,9 +94,9 @@ ActiveRecord::Schema.define(version: 2020_10_14_081844) do
     t.integer "customer_id"
     t.string "name"
     t.string "post_code"
-    t.integer "how_to_pay", limit: 1, default: 0, null: false
+    t.integer "how_to_pay"
     t.integer "deliver_fee"
-    t.integer "order_status", limit: 1, default: 0, null: false
+    t.integer "order_status"
     t.integer "total_payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
