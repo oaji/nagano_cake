@@ -9,7 +9,6 @@ class Admins::SessionsController < Devise::SessionsController
      super
     else
       redirect_to root_path
-      flash[:error]
     end
    end
 
