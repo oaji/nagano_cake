@@ -1,5 +1,7 @@
-<div class="container new_background_image" style=" width: 200%;">
-  <div style="margin-left:　500px">
+<div class="container new_background_image" style=" width: 100%;">
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-8">
   <h2 style="margin-top: 120px;"><strong>注文情報入力</strong></h2>
   <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
     <div class="font">
@@ -20,7 +22,7 @@
         </tr>
         <p><label><%= radio_button_tag :any, 2 %>登録済住所から選択</label></p>
     </div>
-        <p><%= f.collection_select(:address, @customer.addresses, :id, :customer_address, {:include_blank => '選択して下さい'}) %>
+        <p><%= f.select :address, @customer.addresses.map{|o| [o.post_code + "  " + o.customer_address + " " + o.name, o.id]}, include_blank: '選択して下さい' %>
         </p>
         <div class="font">
           <% if @order.errors.any? %>
@@ -49,8 +51,8 @@
       </div>
   <% end %>
   </div>
+  </div>
 </div>
-
 <script>
   document.getElementById("any_1").onclick = function() {
     // ここに#buttonをクリックしたら発生させる処理を記述する
