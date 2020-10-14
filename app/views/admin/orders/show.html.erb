@@ -5,16 +5,16 @@
 			<table class="table" style="width: 600px;">
 				<tr>
 					<th style="color:#000;">購入者</th>
-					<td style="font-size: 17px;">
+					<td style="font-size: 15px;">
 						<%= link_to admin_customer_path(@order.customer.id), method: :get do %>
 						<%= @order.customer.family_name %><%= @order.customer.first_name%></td>
 						<% end %>
 				</tr>
 				<tr>
 					<th style="color:#000;">配送先</th>
-						<td style="font-size: 17px;">
+						<td style="font-size: 15px; padding: 7px;">
 							<%= @order.post_code %>
-							<%= @order.address %><br>
+							<%= @order.address %><br><br>
 							<%= @order.name %>
 						</td>
 				</tr>
@@ -44,12 +44,13 @@
 				</tr>
 					<% @sum = 0 %>
 					<% @order_items.each do |orderitem| %>
+					<%= @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %>
 				<tr style="font-size: 17px;">
 					<td><%= Item.find(orderitem.item_id).name %></td>
 					<td><%= (Item.find(orderitem.item_id).price*1.10).round %></td>
 					<td><%= orderitem.quantity %></td>
-					<td><%= @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %></td>
-					<%= form_with model: orderitem,url:admin_order_item_path(orderitem.id), method: :patch, local: true do |f| %>
+					<td><%= orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round %></td>
+					<%= form_with model: orderitem,url:admin_order_item_path(orderitem.id), method: :patch, "data-turbolinks": false ,local: true  do |f| %>
 					<td>
 						<%= f.select :order_status, OrderItem.order_statuses.keys.to_a, {} %> 
 					</td>

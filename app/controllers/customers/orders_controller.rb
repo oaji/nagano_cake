@@ -1,8 +1,11 @@
 class Customers::OrdersController < ApplicationController
   before_action :setup_item, only: [:destroy]
+  before_action :cart_item_validation
+
 
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id:current_customer.id)
+    #@orders = current_customer.orders
     @order = Order.new
     @addresses = Address.all
     @order_items = @order.order_items
@@ -28,6 +31,18 @@ class Customers::OrdersController < ApplicationController
   end
 
   def confirm
+    if params[:order][:how_to_pay] == nil
+      errors = ""
+      errors = "支払い方法を選択して下さい<br>"
+    end
+    if params[:any] == nil
+      errors = ""
+      errors += "配送先住所を選択して下さい"
+    end
+    if errors
+      redirect_to new_order_path, notice: errors
+      return
+    end
     session[:order] = Order.new(order_params)
     session[:order][:customer_id] = current_customer.id
     if params[:any].to_i == 1
@@ -84,9 +99,15 @@ class Customers::OrdersController < ApplicationController
   end
 
   private
+  def cart_item_validation
+    if current_customer.cart_items.empty?
+      redirect_to root_path
+    end
+  end
 
   def setup_item
     @setup_item = CartItem.find(params[:id])
+
   end
 
   def set_order

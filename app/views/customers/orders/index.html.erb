@@ -1,9 +1,8 @@
 <div class="orders_background_image">
 	<div class="container">
-	<h1 style="margin-top: 120px; margin-bottom: 20px; color: #fff;"><strong>注文履歴一覧</strong></h1>
+	<h1 style="margin-top: 120px; margin-bottom: 10px; color: #fff;"><strong>注文履歴一覧</strong></h1>
 		<div class="font">
-		<table class="b mytable" border="1" style="text-align: center;">
-			<body>
+			<table class="b mytable" border="1" style="text-align: center;">
 				<tr>
 					<th>注文日</th>
 					<th>配送先</th>
@@ -28,11 +27,13 @@
 						<td><%= link_to '表示する', order_path(order) %></td>
 					</tr>
 				<% end %>
-			</body>
-		</table>
-		<% @orders.each do |order| %>
-		<% end %>
-		<%= paginate @orders %>
+				<% @orders.each do |order| %>
+				<% end %>
+				<%= paginate @orders %>
+			</table>
+			<% @orders.each do |order| %>
+			<% end %>
+			<%= paginate @orders %>
 		</div>
 	</div>
 </div>

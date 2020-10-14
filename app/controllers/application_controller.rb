@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
 
-	before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-	protected
+  protected
 
   def after_sign_in_path_for(resource)
     case resource
@@ -22,10 +21,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
 
-	private
     def configure_permitted_parameters
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name, :first_name, :first_name_kana,:family_name_kana, :post_code, :address, :telephone,:email])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name, :first_name, :first_name_kana,:family_name_kana, :post_code, :address, :telephone,:email])
       devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     end
 
