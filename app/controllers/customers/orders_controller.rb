@@ -2,15 +2,13 @@ class Customers::OrdersController < ApplicationController
   before_action :setup_item, only: [:destroy]
   before_action :cart_item_validation
 
-
   def index
-    @orders = Order.where(customer_id:current_customer.id)
-    #@orders = current_customer.orders
+    #@orders = Order.where(customer_id:current_customer.id)
+    @orders = current_customer.orders.page(params[:page]).reverse_order
     @order = Order.new
     @addresses = Address.all
     @order_items = @order.order_items
     @customer = current_customer
-    @orders = Order.page(params[:page]).reverse_order
   end
 
   def show
@@ -28,6 +26,9 @@ class Customers::OrdersController < ApplicationController
     @order = Order.new
     @address = Address.new
     @customer = current_customer
+    if current_customer.cart_items.empty?
+      redirect_to root_path
+    end
   end
 
   def confirm
@@ -100,9 +101,7 @@ class Customers::OrdersController < ApplicationController
 
   private
   def cart_item_validation
-    if current_customer.cart_items.empty?
-      redirect_to root_path
-    end
+     current_customer.cart_items.empty?
   end
 
   def setup_item
