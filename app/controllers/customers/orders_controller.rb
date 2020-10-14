@@ -1,15 +1,13 @@
 class Customers::OrdersController < ApplicationController
   before_action :setup_item, only: [:destroy]
 
-
   def index
-    @orders = Order.where(customer_id:current_customer.id)
-    #@orders = current_customer.orders
+    #@orders = Order.where(customer_id:current_customer.id)
+    @orders = current_customer.orders.page(params[:page]).reverse_order
     @order = Order.new
     @addresses = Address.all
     @order_items = @order.order_items
     @customer = current_customer
-    @orders = Order.page(params[:page]).reverse_order
   end
 
   def show

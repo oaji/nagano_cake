@@ -4,9 +4,8 @@ class Customers::AddressesController < ApplicationController
 
   def index
     @customer = current_customer
-    @addresses = current_customer.addresses
+    @addresses = current_customer.addresses.page(params[:page]).reverse_order
   	@address = Address.new
-    @addresses = Address.page(params[:page]).reverse_order
   end
 
   def create
