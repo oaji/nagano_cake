@@ -38,7 +38,9 @@ class Customers::CustomersController < ApplicationController
 
 
 	private
+
 	def customer_params
 		 params.require(:customer).permit(:first_name, :first_name_kana,:family_name,:family_name_kana,:post_code,:address,:telephone,:email)
 	end
+
 end

@@ -31,6 +31,4 @@ class Customers::ItemsController < ApplicationController
     @genre = Genre.find(params[:genre_id])
   end
 
-
-
 end
