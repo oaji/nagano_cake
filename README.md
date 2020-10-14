@@ -92,6 +92,7 @@
 * bootstrap
 * jquery
 * kaminari
+* payjp
 
 ## 作成者
 * 中村　まこと
