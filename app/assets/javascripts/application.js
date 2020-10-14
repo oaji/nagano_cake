@@ -40,6 +40,3 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
-function changeDisabled(){
-console.log('click');
-}

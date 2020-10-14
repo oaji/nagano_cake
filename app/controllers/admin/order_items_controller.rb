@@ -11,10 +11,13 @@ class Admin::OrderItemsController < ApplicationController
          @order.update(order_status:0)
        elsif @order_items.all?{|v| v.order_status == "製作待ち"}
          @order.update(order_status:1)
+         flash[:status] = "ステータスを更新しました"
        elsif @order_items.all?{|v| v.order_status == "製作中"}
        	@order.update(order_status:2)
+       	flash[:status] = "ステータスを更新しました"
        elsif @order_items.all?{|v| v.order_status == "製作完了"}
          @order.update(order_status:3)
+         flash[:status] = "ステータスを更新しました"
       end
      end
 	     redirect_to admin_order_path(@order)

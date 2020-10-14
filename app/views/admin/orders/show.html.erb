@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h2 style="margin-top: 120px; margin-bottom: 20px; color: #000;">注文履歴詳細</h2>
+		<div style="margin-top: 10px;"><%= flash[:status] %></div>
 
 			<table class="table" style="width: 600px;">
 				<tr>
@@ -44,7 +45,7 @@
 				</tr>
 					<% @sum = 0 %>
 					<% @order_items.each do |orderitem| %>
-					<%= @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %>
+					<% @sum += (orderitem.quantity*(Item.find(orderitem.item_id).price*1.10).round).round %>
 				<tr style="font-size: 17px;">
 					<td><%= Item.find(orderitem.item_id).name %></td>
 					<td><%= (Item.find(orderitem.item_id).price*1.10).round %></td>
