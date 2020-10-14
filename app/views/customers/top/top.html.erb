@@ -47,7 +47,7 @@
 		  	 </div>
 
 
-				<div class="row">
+				<div class="recommend-items">
 
 					<% @items.each do |item| %>
 						<div class="box" style="float:left; margin-right:20px;">
@@ -59,10 +59,12 @@
 			            	<p style="color: #fff;"><strong><%= item.price %>円</strong></p>
 			          	</div>
 		        	<% end %>
-		    	</div>
-		        <%= link_to items_path do %>
-					<p style="text-align: right;">もっと見る></p>
-				<% end %>
+		        </div>
+		        <div class="items">
+		        	<%= link_to items_path do %>
+						<p style="text-align: right;">もっと見る></p>
+					<% end %>
+				</div>
 			</div>
 		</main>
 	</div>
